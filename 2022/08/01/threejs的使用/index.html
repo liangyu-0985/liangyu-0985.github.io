@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>threejs的使用 | Hexo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1、什么是Three.js和WebGLThree.js是基于原生WebGL封装运行的三维引擎。WebGL（全写Web Graphics Library）是一种3D绘图协议，这种绘图技术标准允许把JavaScript和OpenGL ES 2.0结合在一起，通过增加OpenGL ES 2.0的一个JavaScript绑定，WebGL可以为HTML5 Canvas提供硬件3D加速渲染，这样Web开发人员">
+<meta property="og:type" content="article">
+<meta property="og:title" content="threejs的使用">
+<meta property="og:url" content="http://example.com/2022/08/01/threejs%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1、什么是Three.js和WebGLThree.js是基于原生WebGL封装运行的三维引擎。WebGL（全写Web Graphics Library）是一种3D绘图协议，这种绘图技术标准允许把JavaScript和OpenGL ES 2.0结合在一起，通过增加OpenGL ES 2.0的一个JavaScript绑定，WebGL可以为HTML5 Canvas提供硬件3D加速渲染，这样Web开发人员">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-08-01T07:22:29.717Z">
+<meta property="article:modified_time" content="2022-08-01T07:25:50.047Z">
+<meta property="article:author" content="Ly0807">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="Three">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/user.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">Ly0807</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+						
+							<li><a href="/archives">资料</a></li>
+						
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">主页</a>
+						<a>标签</a>
+						<a>链接</a>
+						<a>关于</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=1869930561&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Cesium/" style="font-size: 10px;">Cesium</a> <a href="/tags/Three/" style="font-size: 10px;">Three</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github网址</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">欢迎转载，转载需带着文章出处链接~~，希望我的经验能帮到你，部分文章仅对遇到的问题提供一个解决思路，对于迫切想要实现功能效果的人来说，希望能稍微沉下心观看，或者直接观看思路部分，或者直接观看完整代码,本文章的代码并不能直接拿来使用，完整代码只是本篇文章解决的问题需要用到的代码，如果直接使用可能会有报错，只要修改一下代码既可使用~~~</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/user.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">资料</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-threejs的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/08/01/threejs%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
+  	<time datetime="2022-08-01T07:22:29.717Z" itemprop="datePublished">2022-08-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      threejs的使用
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Three/" rel="tag">Three</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1、什么是Three-js和WebGL"><a href="#1、什么是Three-js和WebGL" class="headerlink" title="1、什么是Three.js和WebGL"></a>1、什么是Three.js和WebGL</h1><p>Three.js是基于原生WebGL封装运行的三维引擎。<br>WebGL（全写Web Graphics Library）是一种3D绘图协议，这种绘图技术标准允许把JavaScript和OpenGL ES 2.0结合在一起，通过增加OpenGL ES 2.0的一个JavaScript绑定，WebGL可以为HTML5 Canvas提供硬件3D加速渲染，这样Web开发人员就可以借助系统显卡来在浏览器里更流畅地展示3D场景和模型了，还能创建复杂的导航和数据视觉化。显然，WebGL技术标准免去了开发网页专用渲染插件的麻烦，可被用于创建具有复杂3D结构的网站页面，甚至可以用来设计3D网页游戏等等。</p>
+<h1 id="2、创建三维场景"><a href="#2、创建三维场景" class="headerlink" title="2、创建三维场景"></a>2、创建三维场景</h1><h2 id="2-1、创建渲染器"><a href="#2-1、创建渲染器" class="headerlink" title="2.1、创建渲染器"></a>2.1、创建渲染器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">renderer = new THREE.WebGLRenderer();</span><br></pre></td></tr></table></figure>
+<h2 id="2-2、创建场景"><a href="#2-2、创建场景" class="headerlink" title="2.2、创建场景"></a>2.2、创建场景</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scene = new THREE.Scene();</span><br><span class="line"></span><br><span class="line">// 设置背景颜色</span><br><span class="line">scene.background = new THREE.Color(0x003152);</span><br></pre></td></tr></table></figure>
+<h2 id="2-3、创建正交相机"><a href="#2-3、创建正交相机" class="headerlink" title="2.3、创建正交相机"></a>2.3、创建正交相机</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let k = 1920 / 1080;</span><br><span class="line">let s = 200;</span><br><span class="line">camera = new THREE.OrthographicCamera(-s*k, s*k, s, -s, 1, 1000);</span><br><span class="line"></span><br><span class="line">// 设置相机位置及相机方向</span><br><span class="line">camera.up.set(0, -1, 0);</span><br><span class="line">camera.position.set(0, 0, 400);</span><br><span class="line">camera.lookAt(scene.position);</span><br></pre></td></tr></table></figure>
+<h2 id="2-4、创建组合器"><a href="#2-4、创建组合器" class="headerlink" title="2.4、创建组合器"></a>2.4、创建组合器</h2><p>组合器的作用，Three.js在场景和相机之外，添加其他的功能模块，如抗锯齿、描边。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">composer = new THREE.EffectComposer(renderer);</span><br><span class="line">renderPass = new THREE.RenderPass(scene, camera);</span><br><span class="line">composer.addPass(renderPass);</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-1、描边功能"><a href="#2-4-1、描边功能" class="headerlink" title="2.4.1、描边功能"></a>2.4.1、描边功能</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">outlinePass = new THREE.OutlinePass(new THREE.Vector2(1920, 1080), scene, camera);</span><br><span class="line">composer.addPass(outlinePass);</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-2、抗锯齿功能"><a href="#2-4-2、抗锯齿功能" class="headerlink" title="2.4.2、抗锯齿功能"></a>2.4.2、抗锯齿功能</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">effectFXAA = new THREE.ShaderPass(THREE.FXAAShader);</span><br><span class="line">effectFXAA.uniforms[&#x27;resolution&#x27;].value.set(1 / 1920, 1/ 1080);</span><br><span class="line">composer.addPass(effectFXAA);</span><br></pre></td></tr></table></figure>
+<h2 id="2-5、创建控制器"><a href="#2-5、创建控制器" class="headerlink" title="2.5、创建控制器"></a>2.5、创建控制器</h2><p>控制器主要用于对三维场景的操作，其作用于相机</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">controls = new THREE.TrackballControls(camera, renderer.domElement);</span><br><span class="line"></span><br><span class="line">// 禁止相机平移和缩放</span><br><span class="line">controls.enablePan = false;</span><br><span class="line">controls.enableZoom = false;</span><br><span class="line"></span><br><span class="line">// 设置相机旋转平滑度</span><br><span class="line">controls.rotateSpeed = 10;</span><br></pre></td></tr></table></figure>
+<h2 id="2-6、添加灯光"><a href="#2-6、添加灯光" class="headerlink" title="2.6、添加灯光"></a>2.6、添加灯光</h2><h3 id="2-6-1、添加环境光"><a href="#2-6-1、添加环境光" class="headerlink" title="2.6.1、添加环境光"></a>2.6.1、添加环境光</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">light = new THREE.AmbientLight(0xffffff);</span><br><span class="line"></span><br><span class="line">// 设置光照强度</span><br><span class="line">light.intensity = 0.8;</span><br><span class="line"></span><br><span class="line">// 将光线添加到场景中</span><br><span class="line">scene.add(light);</span><br></pre></td></tr></table></figure>
+<h3 id="2-6-2、添加平行光"><a href="#2-6-2、添加平行光" class="headerlink" title="2.6.2、添加平行光"></a>2.6.2、添加平行光</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">light = new THREE.DirectionLight(0xffffff);</span><br><span class="line"></span><br><span class="line">// 设置灯光位置，参数基于xyz，分为正负方向</span><br><span class="line">light.position.set(0, 8, 0);</span><br><span class="line"></span><br><span class="line">// 设置光照强度</span><br><span class="line">light.intensity = 0.8;</span><br><span class="line"></span><br><span class="line">// 将光线添加到场景中</span><br><span class="line">scene.add(light);</span><br></pre></td></tr></table></figure>
+<h2 id="2-7、动画"><a href="#2-7、动画" class="headerlink" title="2.7、动画"></a>2.7、动画</h2><p>动画是三维场景展示必备的，将场景和相机放到渲染中进行渲染，本身意为帧数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function animate()&#123;</span><br><span class="line">    // 该方法为JS的一个动画方法，如果没有该方法，可以通过setTimeout来进行处理</span><br><span class="line">    requestAnimationFrame(animate);</span><br><span class="line">    // setTimeout(animate,33); 33ms执行一次，相当与30帧</span><br><span class="line"></span><br><span class="line">    // 渲染组合器</span><br><span class="line">    composer.render();</span><br><span class="line"></span><br><span class="line">    // 控制器，如果不放在动画中，则无法进行鼠标旋转等功能</span><br><span class="line">    controls.update();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 动画初始化调用，如果不进行调用，则无法进入动画</span><br><span class="line">animate();</span><br></pre></td></tr></table></figure>
+
+<h1 id="3、场景交互"><a href="#3、场景交互" class="headerlink" title="3、场景交互"></a>3、场景交互</h1><p>鼠标点击部件，对相应的部件进行处理</p>
+<h2 id="3-1、创建点击事件及方法（selectHandler）"><a href="#3-1、创建点击事件及方法（selectHandler）" class="headerlink" title="3.1、创建点击事件及方法（selectHandler）"></a>3.1、创建点击事件及方法（selectHandler）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 默认当前屏幕显示全为Threejs，不存在其他物体遮挡</span><br><span class="line"></span><br><span class="line">// 对象拾取</span><br><span class="line">raycaster = new THREE.Raycaster();</span><br><span class="line"></span><br><span class="line">// 存放鼠标位置获取</span><br><span class="line">mouse = new THREE.Vector2();</span><br><span class="line"></span><br><span class="line">// 创建点击事件</span><br><span class="line">document.addEventListener(&quot;click&quot;, selectHandler, false);</span><br><span class="line"></span><br><span class="line">// 方法selectHandler，ev为鼠标点击后传入的放大</span><br><span class="line">function selectHandler(ev)&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-2、selectHandler方法内部"><a href="#3-2、selectHandler方法内部" class="headerlink" title="3.2、selectHandler方法内部"></a>3.2、selectHandler方法内部</h2><h3 id="3-2-1、获取鼠标点击部件"><a href="#3-2-1、获取鼠标点击部件" class="headerlink" title="3.2.1、获取鼠标点击部件"></a>3.2.1、获取鼠标点击部件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mouse.x = (ev.clientX / 1920) * 2 - 1;</span><br><span class="line">mouse.y = -(ev.clientY / 1080) * 2 + 1;</span><br><span class="line"></span><br><span class="line">// 将mouse传入raycaster中</span><br><span class="line">raycaster.setFromCamera(mouse, camera);</span><br><span class="line"></span><br><span class="line">// 检测模型选中情况，objects为需要检测的模型</span><br><span class="line">intersects = raycaster.intersectObjects(objects, true);</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-2、物体描边"><a href="#3-2-2、物体描边" class="headerlink" title="3.2.2、物体描边"></a>3.2.2、物体描边</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 只需要检测intersects的第一个值即可，将第一个值的object存放起来</span><br><span class="line">selectedObjects = intersects[0].object;</span><br><span class="line"></span><br><span class="line">// 描边必须要放入数组中，这里如果要同时放多个值，可以通过push的方法来进行添加</span><br><span class="line">outlineObjects = [selectedObjects];</span><br><span class="line">outlinePass.selectedObjects = outlineObjects;</span><br></pre></td></tr></table></figure>
+
+<h1 id="4、FBX模型加载"><a href="#4、FBX模型加载" class="headerlink" title="4、FBX模型加载"></a>4、FBX模型加载</h1><h2 id="4-1、创建FBX读取器并且加载"><a href="#4-1、创建FBX读取器并且加载" class="headerlink" title="4.1、创建FBX读取器并且加载"></a>4.1、创建FBX读取器并且加载</h2><p>FBXLoader是一个Three.js基于FBX封装的类，通过该方法可以直接解析FBX模型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">load = new THREE.FBXLoader();</span><br><span class="line">url = &quot;./model/a.FBX&quot;;</span><br><span class="line">load.load(url,function(object)&#123;</span><br><span class="line">    console.log(&quot;FBX模型为:&quot;,object)</span><br><span class="line">&#125;,function(xhr)&#123;</span><br><span class="line">    console.log(&quot;当前加载进度为：&quot; + xhr.loaded / xhr.total * 100 + &quot;%&quot;);</span><br><span class="line">&#125;,function(error)&#123;</span><br><span class="line">    console.log(&quot;加载失败&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="4-2、对模型进行处理"><a href="#4-2、对模型进行处理" class="headerlink" title="4.2、对模型进行处理"></a>4.2、对模型进行处理</h2><h3 id="4-2-1、大小调整"><a href="#4-2-1、大小调整" class="headerlink" title="4.2.1、大小调整"></a>4.2.1、大小调整</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">object.scale.set(1, 1, 1);</span><br><span class="line">scene.add(object);</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-1、模型简化，处理纹理，降低GPU"><a href="#4-2-1、模型简化，处理纹理，降低GPU" class="headerlink" title="4.2.1、模型简化，处理纹理，降低GPU"></a>4.2.1、模型简化，处理纹理，降低GPU</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 遍历模型的部件</span><br><span class="line">object.travence(child =&gt;&#123;</span><br><span class="line">    if(child instanceof THREEE.Mesh)&#123;</span><br><span class="line">        child.material = new THREE.MeshPhysicalMaterial(&#123;</span><br><span class="line">            color: 0xcccccc,</span><br><span class="line">            metalness: 0.4,</span><br><span class="line">            roughness: 0.4</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="5、添加箭头指向"><a href="#5、添加箭头指向" class="headerlink" title="5、添加箭头指向"></a>5、添加箭头指向</h1><h2 id="5-1、创建箭头分组"><a href="#5-1、创建箭头分组" class="headerlink" title="5.1、创建箭头分组"></a>5.1、创建箭头分组</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arrowGroup = new THREE.Group();</span><br></pre></td></tr></table></figure>
+<h2 id="5-2、创建线"><a href="#5-2、创建线" class="headerlink" title="5.2、创建线"></a>5.2、创建线</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">material = new THREE.LineMaterial(&#123;</span><br><span class="line">    color: 0xffffff,</span><br><span class="line">    linewidth: 2,</span><br><span class="line">    opacity: 1,</span><br><span class="line">    depthWhite: false,</span><br><span class="line">    transparent: false</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 不加的话线会产生绘制bug</span><br><span class="line">material.resolution.set(1920, 1080);</span><br><span class="line"></span><br><span class="line">// 创建线段</span><br><span class="line">var lineGroupArrow = new THREE.Group();</span><br><span class="line">for(var i= 0; i&lt; 10; i++)&#123;</span><br><span class="line">    var geometry = new THREE.LineGeometry();</span><br><span class="line">    var pointArr = [</span><br><span class="line">        -1 * i * 2, 0, 0, // 线的开头</span><br><span class="line">        -1 * i * 2 + 1, 0, 0, // 线的结尾</span><br><span class="line">    ]</span><br><span class="line">    geometry.setPosition(pointArr);</span><br><span class="line">    var line = new THREE.Line2(geometry, material);</span><br><span class="line">    lineGroupArrow.add(line);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 将线段添加到arrowGroup分组中</span><br><span class="line">arrowGroup.add(lineGroupArrow);</span><br></pre></td></tr></table></figure>
+<h2 id="5-3、创建箭头"><a href="#5-3、创建箭头" class="headerlink" title="5.3、创建箭头"></a>5.3、创建箭头</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">cylinderGeometry = new THREE.CylinderGeometry(0, 0.06, 0.24, 50, 50, false);</span><br><span class="line">cylinderMaterial = new THREE.MeshBasicMaterial(&#123;</span><br><span class="line">    color: 0xffffff,</span><br><span class="line">    opacity: 1</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">arrowCylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);</span><br><span class="line">// 将箭头平移到线的末端</span><br><span class="line">arrowCylinder.translateX(20);</span><br><span class="line">// 将箭头旋转与线同方向，旋转90°</span><br><span class="line">arrowCylinder.rotateZ(Math.PI / 2);</span><br><span class="line"></span><br><span class="line">// 将箭头添加到arrowGroup分组中</span><br><span class="line">arrowGroup.add(arrowCylinder);</span><br></pre></td></tr></table></figure>
+<h2 id="5-4、创建精灵文字"><a href="#5-4、创建精灵文字" class="headerlink" title="5.4、创建精灵文字"></a>5.4、创建精灵文字</h2><p>精灵文字和普通文字的区别  </p>
+<ul>
+<li>普通文字，默认朝一个方向展示，当对相机进行操作，视角转换到其他位置时，无法看到文字，需要通过手动调整文字的朝向。</li>
+<li>精灵文字，始终朝向相机的方向，视角转换时文字会跟着旋转。</li>
+</ul>
+<h3 id="5-4-1、创建画布，存放文字"><a href="#5-4-1、创建画布，存放文字" class="headerlink" title="5.4.1、创建画布，存放文字"></a>5.4.1、创建画布，存放文字</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function createCT(t, xs)&#123;</span><br><span class="line">    // 生成容器</span><br><span class="line">    text = document.getElementById(&quot;text&quot;);</span><br><span class="line">    canvas = document.createElement(&quot;canvas&quot;);</span><br><span class="line">    text.appendChild(canvas);</span><br><span class="line">    // 设置大小</span><br><span class="line">    canvas.width = xs / 2 * num;</span><br><span class="line">    canvas.height = xs;</span><br><span class="line"></span><br><span class="line">    ctx = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">    ctx.fillText(t, 0, xs - xs / 10);</span><br><span class="line"></span><br><span class="line">    return canvas;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-4-2、创建精灵文字"><a href="#5-4-2、创建精灵文字" class="headerlink" title="5.4.2、创建精灵文字"></a>5.4.2、创建精灵文字</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function createText(t)&#123;</span><br><span class="line">    canvas = createCT(t, 12 * 10);</span><br><span class="line">    canvasTexture = new THREE.CanvasTexture(canvas);</span><br><span class="line">    spriteMaterial = new THREE.SpriteMaterial(&#123;</span><br><span class="line">        map: canvasTexture</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    // 创建精灵文字</span><br><span class="line">    sprite = new THREE.Sprite(spriteMaterial);</span><br><span class="line"></span><br><span class="line">    return sprite;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-4-3、添加精灵文字"><a href="#5-4-3、添加精灵文字" class="headerlink" title="5.4.3、添加精灵文字"></a>5.4.3、添加精灵文字</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">txt = createText(&quot;文字&quot;);</span><br><span class="line">arrowGroup.add(txt);</span><br></pre></td></tr></table></figure>
+
+<h1 id="6、添加姿态球"><a href="#6、添加姿态球" class="headerlink" title="6、添加姿态球"></a>6、添加姿态球</h1><h2 id="6-1、创建经度线"><a href="#6-1、创建经度线" class="headerlink" title="6.1、创建经度线"></a>6.1、创建经度线</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">lngGroup = new THREE.Group();</span><br><span class="line">// 经度圈的数量</span><br><span class="line">lngLength = 20;</span><br><span class="line">// 暂时没有用，后边会单独写，这里统一放一下</span><br><span class="line">lngLen = lngLength * 2;</span><br><span class="line"></span><br><span class="line">for(var j= 0; j&lt; lngLength; j++)&#123;</span><br><span class="line">    points = [];</span><br><span class="line">    // 绘制圆用的线段数，越大越细腻</span><br><span class="line">    length = 20;</span><br><span class="line">    // 圆的半径，因为经度圈大小一样</span><br><span class="line">    circle = 20;</span><br><span class="line"></span><br><span class="line">    // 通过算法计算每个圆圈生成的位置</span><br><span class="line">    for(var i= 0; i&lt; length; i++)&#123;</span><br><span class="line">        points.push(new THREE.Vector2(</span><br><span class="line">            circle * Math.cos(Math.PI * 2 * i / length),</span><br><span class="line">            circle * Math.sin(Math.PI * 2 * i / length)</span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    shape = new THREE.Shape(points);</span><br><span class="line">    arcGeometry = shape.makeGeomatry();</span><br><span class="line">    arcMaterial = new THREE.LineBasicMaterial(&#123;</span><br><span class="line">        color: 0xffffff</span><br><span class="line">    &#125;);</span><br><span class="line">    // 创建闭环圆圈</span><br><span class="line">    arc = new THREE.LineLoop(arcGeometry, arcMaterial);</span><br><span class="line">    // 根据经度旋转到对应的方向</span><br><span class="line">    arc.rotateY(Math.PI / lngLength * j);</span><br><span class="line">    </span><br><span class="line">    lngGroup.add(arc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 最后添加到分组中</span><br><span class="line">ztqGroup.add(lngGroup);</span><br></pre></td></tr></table></figure>
+<h2 id="6-2、创建纬度线"><a href="#6-2、创建纬度线" class="headerlink" title="6.2、创建纬度线"></a>6.2、创建纬度线</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">latGroup = new THREE.Group();</span><br><span class="line">latLength = 20;</span><br><span class="line">// 后面计算圆的半径和平移量需要用到</span><br><span class="line">latLen = latLength * 2;</span><br><span class="line"></span><br><span class="line">for(var j= -latLength/ 2; j&lt;= latLength/ 2; j++)&#123;</span><br><span class="line">    points = [];</span><br><span class="line">    length = 20;</span><br><span class="line">    // 圆的半径，因为纬度球大小不一样，所以需要动态计算圆的半径</span><br><span class="line">    // 如果j为最大值或最小值，那么绘制半径为0，或者重新写一个计算半径，这里设置为0</span><br><span class="line">    circle = Math.abs(j) != latLength/ 2 ？ 20 * Math.cos(Math.PI * 2 * j / latLen) : 0;</span><br><span class="line">    </span><br><span class="line">    // 通过算法计算每个圆圈生成的位置</span><br><span class="line">    for(var i= 0; i&lt; length; i++)&#123;</span><br><span class="line">        points.push(new THREE.Vector2(</span><br><span class="line">            circle * Math.cos(Math.PI * 2 * i / length),</span><br><span class="line">            circle * Math.sin(Math.PI * 2 * i / length)</span><br><span class="line">        ))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    shape = new THREE.Shape(points);</span><br><span class="line">    arcGeometry = shape.makeGeomatry();</span><br><span class="line">    arcMaterial = new THREE.LineBasicMaterial(&#123;</span><br><span class="line">        color: 0xffffff</span><br><span class="line">    &#125;);</span><br><span class="line">    // 创建闭环圆圈</span><br><span class="line">    arc = new THREE.LineLoop(arcGeometry, arcMaterial);</span><br><span class="line">    // 根据纬度旋转到对应的方向</span><br><span class="line">    // 先将圆旋转变为纬度线</span><br><span class="line">    arc.rotateX(Math.PI / 2);</span><br><span class="line">    // 在将圆平移到对应的纬度上</span><br><span class="line">    arc.translateZ(latLength * Math.sin(Math.PI * 2 * j / latLen))</span><br><span class="line">    </span><br><span class="line">    lngGroup.add(arc);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-3、创建经度上的文字"><a href="#6-3、创建经度上的文字" class="headerlink" title="6.3、创建经度上的文字"></a>6.3、创建经度上的文字</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">for(var i = -lngLen / 2; i&lt; lngLen / 2; i++)&#123;</span><br><span class="line">    // 计算数值，保留小数2位</span><br><span class="line">    deg = parseInt(Math.abs(360 / lngLen * i) * 100) / 100;</span><br><span class="line">    // 判断正负</span><br><span class="line">    spriteTxt = createText(</span><br><span class="line">        `$&#123;(360 / lngLen * i) &lt; 0 ? &quot;-&quot; : &quot;&quot;&#125;$&#123;deg&#125;`;</span><br><span class="line">    );</span><br><span class="line">    spriteTxt.center = new THREE.Vector2(0, 0);</span><br><span class="line">    spriteTxt.position.set(</span><br><span class="line">        0,</span><br><span class="line">        circle * Math.cos(Math.PI * 2 * i / lngLen),</span><br><span class="line">        circle * Math.sin(Math.PI * 2 * i / lngLen)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    latGroup.add(spriteTxt);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-4、创建纬度上的文字"><a href="#6-4、创建纬度上的文字" class="headerlink" title="6.4、创建纬度上的文字"></a>6.4、创建纬度上的文字</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">for(var i = 0; i&lt; latLen; i++)&#123;</span><br><span class="line">    // 计算数值，保留小数2位</span><br><span class="line">    deg = parseInt(Math.min(360 - 360 / latLen * i, 360 / latLen * i) * 100) / 100;</span><br><span class="line">    // 超过90说明数值不对，跳出</span><br><span class="line">    if(deg &gt; 90) continue;</span><br><span class="line">    // 判断正负</span><br><span class="line">    spriteTxt = createText(</span><br><span class="line">        `$&#123;(360 - 360 / latLen * i) &gt; (360 / latLen * i) ? &quot;-&quot; : &quot;&quot;&#125;$&#123;deg&#125;`;</span><br><span class="line">    );</span><br><span class="line">    spriteTxt.center = new THREE.Vector2(0, 0);</span><br><span class="line">    spriteTxt.position.set(</span><br><span class="line">        0,</span><br><span class="line">        circle * Math.cos(Math.PI * 2 * i / latLen),</span><br><span class="line">        circle * Math.sin(Math.PI * 2 * i / latLen)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    latGroup.add(spriteTxt);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-5、创建切面"><a href="#6-5、创建切面" class="headerlink" title="6.5、创建切面"></a>6.5、创建切面</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cGeometry = new THREE.CircleGeometry(circle, circle, 10, Math.PI * 2);</span><br><span class="line">cMaterial = new THREE.MeshBasicMaterial(&#123;</span><br><span class="line">    color: 0xffffff,</span><br><span class="line">    transparent: true,</span><br><span class="line">    opacity: 1,</span><br><span class="line">    side: THREE.DoubleSide</span><br><span class="line">&#125;);</span><br><span class="line">circleMesh = new THREE.Mesh(cGeometry, cMaterial);</span><br><span class="line"></span><br><span class="line">latGroup.add(circleMesh);</span><br></pre></td></tr></table></figure>
+
+<h1 id="7、天线指向"><a href="#7、天线指向" class="headerlink" title="7、天线指向"></a>7、天线指向</h1><h2 id="7-1、将天线移动到对应的位置上"><a href="#7-1、将天线移动到对应的位置上" class="headerlink" title="7.1、将天线移动到对应的位置上"></a>7.1、将天线移动到对应的位置上</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">radar = object.getObjectByName(&quot;Radar00&quot;);</span><br><span class="line">radar.geometry.ComputeBoundingBox();</span><br><span class="line">center = new THREE.Vector3();</span><br><span class="line">center.addVectors(radar.geometry.boundingBox.min, radar.geometry.boundingBox.max);</span><br><span class="line">center.multiphyScale(0.5);</span><br><span class="line">center.applyMatrix4(radar.matrixWorld);</span><br></pre></td></tr></table></figure>
+<h2 id="7-2、天线旋转"><a href="#7-2、天线旋转" class="headerlink" title="7.2、天线旋转"></a>7.2、天线旋转</h2><p>将坐标变为根据经纬度旋转角度，然后对指向进行旋转</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">position =&#123;x:1, y:1, z:1&#125;;</span><br><span class="line">rotatey = 0;</span><br><span class="line">rotatez = 0;</span><br><span class="line">// 判断xyz中是否有0的值存在</span><br><span class="line">// 根据else的计算公式，发现当x为0时，rotatey的分母为0会出现错误</span><br><span class="line">// 如果x和y都为0，那么根据勾股定理计算(xy)也为0，rotatez的分母为0会出现错误</span><br><span class="line">// (xy) = Math.sqrt(Math.pow(position.x, 2) + Math.pow(position.y, 2))</span><br><span class="line">if(position.x == 0)&#123;</span><br><span class="line">    // 这里判断y旋转正负</span><br><span class="line">    rotatey = position.y == 0 ? 0 : -Math.PI / 2 * (position.y &gt;= 0 ? 1 : -1);</span><br><span class="line">    if(rotatey == 0)&#123;</span><br><span class="line">        // 这里判断z旋转正负</span><br><span class="line">        rotatez = position.z == 0 ? 0 : -Math.PI / 2 * (position.y &gt;= 0 ? 1: -1);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        // 否则同下计算公式一样</span><br><span class="line">        rotatez = position.z == 0 ? 0 : -Math.atan(position.z / Math.sqrt(Math.pow(position.x, 2) + Math.pow(position.y, 2)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    // 如果x不为0，y直接根据y和x求反正切</span><br><span class="line">    rotatey = -Math.atan(position.y / position.x);</span><br><span class="line">    // z则是根据z和(xy)长度求反正切</span><br><span class="line">    rotatez = -Math.atan(position.z / Math.sqrt(Math.pow(position.x, 2) + Math.pow(position.y, 2)));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 对天线指向进行旋转</span><br><span class="line">arrow.rotation.y = -rotatey;</span><br><span class="line">arrow.rotation.z = rotatez;</span><br></pre></td></tr></table></figure>
+
+<h1 id="8、其他"><a href="#8、其他" class="headerlink" title="8、其他"></a>8、其他</h1><h2 id="8-1、获取旋转轴"><a href="#8-1、获取旋转轴" class="headerlink" title="8.1、获取旋转轴"></a>8.1、获取旋转轴</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function getRotateAxis(rule) &#123;</span><br><span class="line">    // rule值+x-y32，为以X轴为主，向Y轴反方向偏移32°</span><br><span class="line">    r1 = rule.substr(0, 2);</span><br><span class="line">    r2 = rule.substr(2, 2);</span><br><span class="line">    r3 = rule.substr(4);</span><br><span class="line">    ro = Math.PI / 180 * parseInt(r3);</span><br><span class="line"></span><br><span class="line">    rotate = &#123; x:0, y:0, z:0&#125;;</span><br><span class="line"></span><br><span class="line">    rotate[r1[1]] = Math.cos(ro) * (r1[0] == &quot;+&quot; ? 1 : -1);</span><br><span class="line">    rotate[r2[1]] = Math.sin(ro) * (r2[0] == &quot;+&quot; ? 1 : -1);</span><br><span class="line"></span><br><span class="line">    zz = new THREE.Vector3(rotate.x, rotate.y, rotate.z);</span><br><span class="line"></span><br><span class="line">    return zz;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="8-2、欧拉角旋转"><a href="#8-2、欧拉角旋转" class="headerlink" title="8.2、欧拉角旋转"></a>8.2、欧拉角旋转</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 根据zxy的顺序来旋转</span><br><span class="line">function rotate()&#123;</span><br><span class="line">    model.rotateZ(Math.PI / 180 * 10);</span><br><span class="line">    model.rotateX(Math.PI / 180 * -20);</span><br><span class="line">    model.rotateY(Math.PI / 180 * 30);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="8-3、物体回正"><a href="#8-3、物体回正" class="headerlink" title="8.3、物体回正"></a>8.3、物体回正</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">funciton unitRotate()&#123;</span><br><span class="line">    model.rotateY(Math.PI / 180 * -30);</span><br><span class="line">    model.rotateX(Math.PI / 180 * 20);</span><br><span class="line">    model.rotateZ(Math.PI / 180 * -10);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="8-4、调整视角"><a href="#8-4、调整视角" class="headerlink" title="8.4、调整视角"></a>8.4、调整视角</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// zoom为1时表示还原缩放</span><br><span class="line">camera.zoom = 1;</span><br><span class="line"></span><br><span class="line">// 复位视角</span><br><span class="line">camera.up.set(0, -1, 0);</span><br><span class="line">camera.position.set(0, 0, 400);</span><br><span class="line"></span><br><span class="line">// 俯视角</span><br><span class="line">// 只有当视角为俯视角或仰视角时，需要做一个偏移，否则会出现问题，相当于万向节锁死</span><br><span class="line">camera.up.set(1, -1, 0);</span><br><span class="line">camera.position.set(0, -400, 0);</span><br><span class="line"></span><br><span class="line">// 右视角</span><br><span class="line">camera.up.set(0, -1, 0);</span><br><span class="line">camera.position.set(0, 0, 400);</span><br><span class="line"></span><br><span class="line">// 俯视角</span><br><span class="line">camera.up.set(0, -1, 0);</span><br><span class="line">camera.position.set(-400, 0, 0);</span><br><span class="line"></span><br><span class="line">// 更新相机</span><br><span class="line">camera.updateProjectionMatrix();</span><br></pre></td></tr></table></figure>
+
+<h1 id="9、基础操作"><a href="#9、基础操作" class="headerlink" title="9、基础操作"></a>9、基础操作</h1><h2 id="9-1、场景渲染"><a href="#9-1、场景渲染" class="headerlink" title="9.1、场景渲染"></a>9.1、场景渲染</h2><p>threejs初始化创建必须包含三个部分，分别为：</p>
+<ul>
+<li>渲染renderer — new THREE.WebGLRenderer();</li>
+<li>场景scene — new THREE.Scene();</li>
+<li>相机camera — new THREE.PerspectiveCamera( 75, window.innerWidth &#x2F; window.innerHeight, 0.1, 1000 );</li>
+</ul>
+<p>当着三部分创建完之后，必须要有一个animate动画来进行驱动：</p>
+<ul>
+<li>动画animate — requestAnimationFrame( animate )</li>
+<li>重复渲染 — renderer.render( scene, camera )</li>
+</ul>
+<h2 id="9-2、Mesh创建"><a href="#9-2、Mesh创建" class="headerlink" title="9.2、Mesh创建"></a>9.2、Mesh创建</h2><p>创建一个Mesh需要由2部分</p>
+<ul>
+<li>顶点和面geometry — new THREE.BoxGeometry( 1, 1, 1 );</li>
+<li>材质material — new THREE.MeshBasicMaterial( { color: 0x00ff00 } );</li>
+</ul>
+<p>将上述2部分放到Mesh中cube &#x3D; new THREE.Mesh( geometry, material );<br>最后将其加入到场景中（或者是Group分组） scene.add( cube );</p>
+<h2 id="9-3、根据部件名获取部件"><a href="#9-3、根据部件名获取部件" class="headerlink" title="9.3、根据部件名获取部件"></a>9.3、根据部件名获取部件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object = model.getObjectByName(&quot;radar&quot;);</span><br></pre></td></tr></table></figure>
+<h2 id="9-4、部件分组"><a href="#9-4、部件分组" class="headerlink" title="9.4、部件分组"></a>9.4、部件分组</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">group = new THREE.Group();</span><br><span class="line">group.add(object);</span><br></pre></td></tr></table></figure>
+<h2 id="9-5、位移"><a href="#9-5、位移" class="headerlink" title="9.5、位移"></a>9.5、位移</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">object.translateX(100);</span><br><span class="line">object.position.y += 100;</span><br></pre></td></tr></table></figure>
+<h2 id="9-6、旋转"><a href="#9-6、旋转" class="headerlink" title="9.6、旋转"></a>9.6、旋转</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">object.rotateX(Math.PI / 180 * 100);</span><br><span class="line">object.rotation.y = --Math.atan(100 / 20);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/08/01/Cesium%E5%B0%81%E8%A3%85%E4%BA%86%E4%B8%80%E4%B8%AA%E8%BD%A8%E9%81%93%E8%BD%A8%E8%BF%B9%E8%BF%90%E8%A1%8C%E7%9A%84%E7%B1%BB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Cesium封装了一个轨道轨迹运行的类
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello Hexo</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 Ly0807
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  主题 <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

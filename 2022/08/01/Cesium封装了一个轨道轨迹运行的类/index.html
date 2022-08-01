@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Cesium封装了一个轨道轨迹运行的类 | Hexo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="该方法可以生成一条运行轨迹，默认轨迹运行过的为红色，轨迹即将运行的为绿色  效果图如下 代码如下1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cesium封装了一个轨道轨迹运行的类">
+<meta property="og:url" content="http://example.com/2022/08/01/Cesium%E5%B0%81%E8%A3%85%E4%BA%86%E4%B8%80%E4%B8%AA%E8%BD%A8%E9%81%93%E8%BD%A8%E8%BF%B9%E8%BF%90%E8%A1%8C%E7%9A%84%E7%B1%BB/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="该方法可以生成一条运行轨迹，默认轨迹运行过的为红色，轨迹即将运行的为绿色  效果图如下 代码如下1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/images/691f271a8017442c8b84436ebb5effe5~tplv-k3u1fbpfcp-watermark.gif">
+<meta property="article:published_time" content="2022-08-01T07:47:34.894Z">
+<meta property="article:modified_time" content="2022-08-01T07:56:57.436Z">
+<meta property="article:author" content="Ly0807">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="Cesium">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/691f271a8017442c8b84436ebb5effe5~tplv-k3u1fbpfcp-watermark.gif">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/user.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">Ly0807</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+						
+							<li><a href="/archives">资料</a></li>
+						
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">主页</a>
+						<a>标签</a>
+						<a>链接</a>
+						<a>关于</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=1869930561&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Cesium/" style="font-size: 10px;">Cesium</a> <a href="/tags/Three/" style="font-size: 10px;">Three</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github网址</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">欢迎转载，转载需带着文章出处链接~~，希望我的经验能帮到你，部分文章仅对遇到的问题提供一个解决思路，对于迫切想要实现功能效果的人来说，希望能稍微沉下心观看，或者直接观看思路部分，或者直接观看完整代码,本文章的代码并不能直接拿来使用，完整代码只是本篇文章解决的问题需要用到的代码，如果直接使用可能会有报错，只要修改一下代码既可使用~~~</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/user.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">资料</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Cesium封装了一个轨道轨迹运行的类" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/08/01/Cesium%E5%B0%81%E8%A3%85%E4%BA%86%E4%B8%80%E4%B8%AA%E8%BD%A8%E9%81%93%E8%BD%A8%E8%BF%B9%E8%BF%90%E8%A1%8C%E7%9A%84%E7%B1%BB/" class="article-date">
+  	<time datetime="2022-08-01T07:47:34.894Z" itemprop="datePublished">2022-08-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Cesium封装了一个轨道轨迹运行的类
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cesium/" rel="tag">Cesium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>该方法可以生成一条运行轨迹，默认轨迹运行过的为红色，轨迹即将运行的为绿色</p>
+</blockquote>
+<h3 id="效果图如下"><a href="#效果图如下" class="headerlink" title="效果图如下"></a>效果图如下</h3><p><img src="/../images/691f271a8017442c8b84436ebb5effe5~tplv-k3u1fbpfcp-watermark.gif" alt="轨道效果，gif录制问题，实际效果正常"></p>
+<h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Cesium封装插件</span><br><span class="line"> * 创建轨道坐标因为轨道创建需要线段表示</span><br><span class="line"> * 轨道坐标请使用数组格式的Cartesian3存放，如下所示</span><br><span class="line"> * pos.push(new Cesium.Cartesian3.fromDegrees(0, 0, 4000000))</span><br><span class="line"> * 配置项配置如下：</span><br><span class="line">    &#123;</span><br><span class="line">        viewer: cesium的viewer,</span><br><span class="line">        lineWidth: 线宽,</span><br><span class="line">        postype: 坐标点类型，默认可以不传,</span><br><span class="line">        out: &#123; 轨道行驶完毕配置项</span><br><span class="line">            name: 名称,</span><br><span class="line">            positions: 坐标点,</span><br><span class="line">            color: 颜色 Cesium.Color.GREEN || new Cesium.Color(0,255,0,1)，</span><br><span class="line">        &#125;,</span><br><span class="line">        in: &#123; 轨道即将行驶配置项</span><br><span class="line">            同上...</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"> */</span><br><span class="line">class GuiDao &#123;</span><br><span class="line"></span><br><span class="line">    constructor(args) &#123;</span><br><span class="line"></span><br><span class="line">        this.viewer = args.viewer; // cesium的viewer</span><br><span class="line">        this.lineWidth = args.lineWidth || 5; // 轨道线宽</span><br><span class="line">        this.optionOut = args.out; // 轨道行驶完毕配置项</span><br><span class="line">        this.optionIn = args.in; // 轨道即将行驶配置项</span><br><span class="line">        this.postype = args.postype; // 判断传入轨道坐标点的类型</span><br><span class="line"></span><br><span class="line">        // 轨道行驶完毕坐标点传数组类型</span><br><span class="line">        if (this.postype == &quot;array&quot;) &#123;</span><br><span class="line">            let pos = this.optionOut.positions.slice();</span><br><span class="line">            this.guidaoOut = [];</span><br><span class="line">            for (let i = 0; i &lt; pos.length; i++) &#123;</span><br><span class="line">                this.guidaoOut.push(new Cesium.Cartesian3.fromDegrees(pos[i][0], pos[i][1], pos[i][2]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            this.guidaoOut = this.optionOut.positions.slice() || []; // 轨道行驶完毕坐标点，默认为空</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 轨道即将行驶坐标点传数组类型</span><br><span class="line">        if (this.postype == &quot;array&quot;) &#123;</span><br><span class="line">            let pos = this.optionIn.positions.slice();</span><br><span class="line">            this.guidaoIn = [];</span><br><span class="line">            for (let i = 0; i &lt; pos.length; i++) &#123;</span><br><span class="line">                this.guidaoIn.push(new Cesium.Cartesian3.fromDegrees(pos[i][0], pos[i][1], pos[i][2]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            this.guidaoIn = this.optionIn.positions.slice() || []; // 轨道即将行驶坐标点，默认为空</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        this.entityOut = null; // 轨道行驶完毕的entity</span><br><span class="line">        this.entityIn = null; // 轨道即将行驶的entity</span><br><span class="line"></span><br><span class="line">        this.guidaoInterval = null; // 测试用来存放定时器的，可以删除</span><br><span class="line"></span><br><span class="line">        this.init(); // 初始化，注释掉使用test方法可以测试</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 测试方法</span><br><span class="line">    test() &#123;</span><br><span class="line">        let ci = 0;</span><br><span class="line">        for (var i = 0; i &lt; 2; i++) &#123;</span><br><span class="line">            this.guidaoOut.push(new Cesium.Cartesian3.fromDegrees(ci, 0, 4000000))</span><br><span class="line">            ci += 0.01</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (var i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">            this.guidaoIn.push(new Cesium.Cartesian3.fromDegrees(ci, 0, 4000000))</span><br><span class="line">            ci += 0.01</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        this.init();</span><br><span class="line"></span><br><span class="line">        this.guidaoInterval = setInterval(() =&gt; &#123;</span><br><span class="line">            this.next();</span><br><span class="line">        &#125;, 33)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 初始化轨道</span><br><span class="line">    init() &#123;</span><br><span class="line">        // 判断，当轨道行驶完毕的坐标点大于2个，新增</span><br><span class="line">        if (this.guidaoOut.length &gt;= 2) &#123;</span><br><span class="line">            this.entityOut = this.createGuiDaoOut();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 轨道即将行驶，新增</span><br><span class="line">        this.entityIn = this.createGuiDaoIn();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 进入下一个轨道点</span><br><span class="line">    next() &#123;</span><br><span class="line">        // 当轨道的即将行驶点为空时，直接返回</span><br><span class="line">        if (!this.guidaoIn.length) return;</span><br><span class="line"></span><br><span class="line">        // 将一个点从即将行驶的点移入行驶完毕的点</span><br><span class="line">        this.guidaoOut.push(this.guidaoIn.shift());</span><br><span class="line"></span><br><span class="line">        // 判断，当轨道行驶完毕的坐标点等于2个，新增</span><br><span class="line">        if (this.guidaoOut.length == 2) &#123;</span><br><span class="line">            this.entityOut = this.createGuiDaoOut();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 判断，当轨道即将行驶的坐标点小于2个，删除</span><br><span class="line">        if (this.guidaoIn.length &lt; 2) &#123;</span><br><span class="line">            this.viewer.entities.remove(this.entityIn)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 重置</span><br><span class="line">    reset(args) &#123;</span><br><span class="line">        this.destroy();</span><br><span class="line"></span><br><span class="line">        this.viewer = args.viewer; // cesium的viewer</span><br><span class="line">        this.lineWidth = args.lineWidth || 5; // 轨道线宽</span><br><span class="line">        this.optionOut = args.out; // 轨道行驶完毕配置项</span><br><span class="line">        this.optionIn = args.in; // 轨道即将行驶配置项</span><br><span class="line"></span><br><span class="line">        this.guidaoOut = this.optionOut.positions || []; // 轨道行驶完毕坐标点，默认为空</span><br><span class="line">        this.guidaoIn = this.optionIn.positions || []; // 轨道即将行驶坐标点，默认为空</span><br><span class="line"></span><br><span class="line">        this.entityOut = null; // 轨道行驶完毕的entity</span><br><span class="line">        this.entityIn = null; // 轨道即将行驶的entity</span><br><span class="line"></span><br><span class="line">        this.guidaoInterval = null;</span><br><span class="line"></span><br><span class="line">        this.init(); // 初始化，注释掉使用test方法可以测试</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 销毁</span><br><span class="line">    destroy() &#123;</span><br><span class="line">        // 测试用的，不测试的话，这条可以删除</span><br><span class="line">        if (this.guidaoInterval) &#123;</span><br><span class="line">            clearInterval(this.guidaoInterval);</span><br><span class="line">            this.guidaoInterval = null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 移除entity，重新添加</span><br><span class="line">        this.viewer.entities.remove(this.entityOut)</span><br><span class="line">        this.viewer.entities.remove(this.entityIn)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 创建行驶完毕的轨道</span><br><span class="line">    createGuiDaoOut() &#123;</span><br><span class="line">        return this.viewer.entities.add(&#123;</span><br><span class="line">            name: this.optionOut.name || &quot;轨道线-行驶完毕&quot;,</span><br><span class="line">            polyline: &#123;</span><br><span class="line">                positions: new Cesium.CallbackProperty(() =&gt; &#123; return this.getOutPos(); &#125;, false),</span><br><span class="line">                material: this.optionOut.color || new Cesium.Color(1, 0, 0, 1),</span><br><span class="line">                width: this.lineWidth,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    // 创建即将行驶的轨道</span><br><span class="line">    createGuiDaoIn() &#123;</span><br><span class="line">        return this.viewer.entities.add(&#123;</span><br><span class="line">            name: this.optionIn.name || &quot;轨道线-即将行驶&quot;,</span><br><span class="line">            polyline: &#123;</span><br><span class="line">                positions: new Cesium.CallbackProperty(() =&gt; &#123; return this.getInPos(); &#125;, false),</span><br><span class="line">                material: this.optionIn.color || new Cesium.Color(0, 1, 0, 1),</span><br><span class="line">                width: this.lineWidth,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    // 获取行驶完毕的轨道，回调函数</span><br><span class="line">    getOutPos() &#123; return this.guidaoOut; &#125;</span><br><span class="line">    // 获取即将行驶的轨道，回调函数</span><br><span class="line">    getInPos() &#123; return this.guidaoIn; &#125;</span><br><span class="line"></span><br><span class="line">    // 获取行驶完毕的轨道，回调函数</span><br><span class="line">    setOutPos(pos) &#123; this.guidaoOut = pos; &#125;</span><br><span class="line">    // 获取即将行驶的轨道，回调函数</span><br><span class="line">    setInPos(pos) &#123; this.guidaoIn = pos; &#125;</span><br><span class="line"></span><br><span class="line">    // 获取行驶完毕的轨道entity</span><br><span class="line">    getOutEntity() &#123; return this.entityOut; &#125;</span><br><span class="line">    // 获取即将行驶的轨道entity</span><br><span class="line">    getInEntity() &#123; return this.entityIn; &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/08/01/threejs%E7%9A%84%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">threejs的使用</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 Ly0807
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  主题 <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
