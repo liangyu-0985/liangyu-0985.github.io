@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>threejs火狐低版本视角转动问题 | Ly0807的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="通过THREE.OrbitControls这个方法来进行视角转动，网上给出的大部分原因为创建时由于没有传第二个参数或者是新建了一个标签覆盖等问题导致视角无法转动。-参考-  浏览器的统一指针事件：Pointer Event   window属性：onpaint   （不是解决办法，仅纪录用）使用HTML元素作为sprite添加到场景后无法转动视角的问题   （不是解决办法，仅纪录用）解决Three">
+<meta property="og:type" content="article">
+<meta property="og:title" content="threejs火狐低版本视角转动问题">
+<meta property="og:url" content="http://example.com/2021/04/12/threejs%E7%81%AB%E7%8B%90%E4%BD%8E%E7%89%88%E6%9C%AC%E8%A7%86%E8%A7%92%E8%BD%AC%E5%8A%A8%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Ly0807的博客">
+<meta property="og:description" content="通过THREE.OrbitControls这个方法来进行视角转动，网上给出的大部分原因为创建时由于没有传第二个参数或者是新建了一个标签覆盖等问题导致视角无法转动。-参考-  浏览器的统一指针事件：Pointer Event   window属性：onpaint   （不是解决办法，仅纪录用）使用HTML元素作为sprite添加到场景后无法转动视角的问题   （不是解决办法，仅纪录用）解决Three">
+<meta property="og:locale">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/39a72e6248b74df29044c4c1d804174c~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5f0ca13cdd424c4caadfd135315e70ee~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fa6b265d807243eb860e1afde73dc2f1~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2021-04-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-02T13:28:02.803Z">
+<meta property="article:author" content="Ly0807">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="Three">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/39a72e6248b74df29044c4c1d804174c~tplv-k3u1fbpfcp-watermark.image">
+  
+    <link rel="alternative" href="/atom.xml" title="Ly0807的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/user.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">Ly0807</a></h1>
+		</hgroup>
+
+		
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+			
+				<li><a href="/archives">资料</a></li>
+			
+			</ul>
+		</nav>
+		<nav class="half-header-menu">
+			<a>主页</a>
+			<a>标签</a>
+			<a>链接</a>
+			<a>关于</a>
+		</nav>
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=1869930561&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Cesium/" style="font-size: 15px;">Cesium</a> <a href="/tags/Potree/" style="font-size: 10px;">Potree</a> <a href="/tags/Three/" style="font-size: 10px;">Three</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github网址</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">欢迎转载，转载需带着文章出处链接~~，希望我的经验能帮到你，部分文章仅对遇到的问题提供一个解决思路，对于迫切想要实现功能效果的人来说，希望能稍微沉下心观看，或者直接观看思路部分，或者直接观看完整代码,本文章的代码并不能直接拿来使用，完整代码只是本篇文章解决的问题需要用到的代码，如果直接使用可能会有报错，只要修改一下代码既可使用~~~</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/user.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">资料</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-threejs火狐低版本视角转动问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/04/12/threejs%E7%81%AB%E7%8B%90%E4%BD%8E%E7%89%88%E6%9C%AC%E8%A7%86%E8%A7%92%E8%BD%AC%E5%8A%A8%E9%97%AE%E9%A2%98/" class="article-date">
+  	<time datetime="2021-04-11T16:00:00.000Z" itemprop="datePublished">2021-04-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      threejs火狐低版本视角转动问题
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Three/" rel="tag">Three</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="通过THREE-OrbitControls这个方法来进行视角转动，网上给出的大部分原因为创建时由于没有传第二个参数或者是新建了一个标签覆盖等问题导致视角无法转动。"><a href="#通过THREE-OrbitControls这个方法来进行视角转动，网上给出的大部分原因为创建时由于没有传第二个参数或者是新建了一个标签覆盖等问题导致视角无法转动。" class="headerlink" title="通过THREE.OrbitControls这个方法来进行视角转动，网上给出的大部分原因为创建时由于没有传第二个参数或者是新建了一个标签覆盖等问题导致视角无法转动。"></a>通过THREE.OrbitControls这个方法来进行视角转动，网上给出的大部分原因为创建时由于没有传第二个参数或者是新建了一个标签覆盖等问题导致视角无法转动。</h5><h2 id="参考"><a href="#参考" class="headerlink" title="-参考-"></a>-参考-</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.iefans.net/zhizhen-shijian-pointer-event/">浏览器的统一指针事件：Pointer Event</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/fetch_api/fetch_api-v9eg2pyi.html">window属性：onpaint</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43170484/article/details/89789915">（不是解决办法，仅纪录用）使用HTML元素作为sprite添加到场景后无法转动视角的问题</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012685679/article/details/54342537">（不是解决办法，仅纪录用）解决Three.js中使用OrbitControls导致不能选中DOM的问题</a></li>
+</ul>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="-说明-"></a>-说明-</h2><p>为什么出现了问题？<br>① 正常情况下，在最新版本的谷歌浏览器（最新版火狐浏览器不清楚）下可以正常使用，并且通过QT（5.10+版本以上），window10系统下没有问题。<br>② 在低版本火狐或者是linux环境下的QT发生了这个问题。<br>③ 经过排查排除上方的OrbitControls传第二个参数的原因，通过控制器可以发现第二个参数打印正常。<br>④ 最后发现OrbitControls内部的方法在低版本下无法使用，主要定位到了Pointer这个事件上。  </p>
+<h3 id="主要版本"><a href="#主要版本" class="headerlink" title="-主要版本-"></a>-主要版本-</h3><blockquote>
+<p>three.js r123，不仅限于这个版本<br>firefox 51.0.1，不仅限于这个版本<br>QT 5.9.6，linux环境  </p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="-思路-"></a>-思路-</h2><blockquote>
+<p>1、查找代码相关位置<br>2、将Pointer替换为Mouse<br>3、event.pointerType无法获取，故直接跳过这步，将里边的方法拿出来  </p>
+</blockquote>
+<h2 id="过程"><a href="#过程" class="headerlink" title="-过程-"></a>-过程-</h2><h3 id="1、鼠标按下事件修改"><a href="#1、鼠标按下事件修改" class="headerlink" title="1、鼠标按下事件修改"></a>1、鼠标按下事件修改</h3><p>在OrbitControls.js内，通过定位Pointer，找到相对应的位置，截图部分我已经对其修改了：<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/39a72e6248b74df29044c4c1d804174c~tplv-k3u1fbpfcp-watermark.image" alt="这里我已经对其修改了，代码行数为1162"><br><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5f0ca13cdd424c4caadfd135315e70ee~tplv-k3u1fbpfcp-watermark.image" alt="这里我已经对其修改了，代码行数为912和913">  </p>
+<h3 id="2、找到事件方法的位置"><a href="#2、找到事件方法的位置" class="headerlink" title="2、找到事件方法的位置"></a>2、找到事件方法的位置</h3><p>找到对应事件的方法（三个方法应该靠在一起），将event.pointerType移除，内部的方法拿出来，代码如下（注意，我这里的switch方法没有删除，故意留在这里的）：<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fa6b265d807243eb860e1afde73dc2f1~tplv-k3u1fbpfcp-watermark.image" alt="这处代码也已经对其修改了，后边有放出过兼容的代码，不过兼不兼容都无所谓。"><br>这里我的方法名都没有进行修改，还叫原来的名字，看情况想改就改。  </p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="-完整代码-"></a>-完整代码-</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">scope.domElement.addEventListener( &#x27;contextmenu&#x27;, onContextMenu, false );</span><br><span class="line">scope.domElement.addEventListener( &#x27;mousedown&#x27;, onPointerDown, false );</span><br><span class="line">scope.domElement.addEventListener( &#x27;wheel&#x27;, onMouseWheel, false );</span><br><span class="line">scope.domElement.addEventListener( &#x27;touchstart&#x27;, onTouchStart, false );</span><br><span class="line">scope.domElement.addEventListener( &#x27;touchend&#x27;, onTouchEnd, false );</span><br><span class="line">scope.domElement.addEventListener( &#x27;touchmove&#x27;, onTouchMove, false );</span><br><span class="line">scope.domElement.addEventListener( &#x27;keydown&#x27;, onKeyDown, false );</span><br><span class="line">// force an update at start</span><br><span class="line">this.update();</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">if ( state !== STATE.NONE ) &#123;</span><br><span class="line">	scope.domElement.ownerDocument.addEventListener( &#x27;mousemove&#x27;, onPointerMove, false );</span><br><span class="line">	scope.domElement.ownerDocument.addEventListener( &#x27;mouseup&#x27;, onPointerUp, false );</span><br><span class="line">	scope.dispatchEvent( startEvent );</span><br><span class="line">&#125;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">function onPointerDown( event ) &#123;</span><br><span class="line">    if ( scope.enabled === false ) return;</span><br><span class="line">    if(&quot;pointerType&quot; in event)&#123;</span><br><span class="line">        switch ( event.pointerType ) &#123;</span><br><span class="line"></span><br><span class="line">            case &#x27;mouse&#x27;:</span><br><span class="line">            case &#x27;pen&#x27;:</span><br><span class="line">                onMouseDown( event );</span><br><span class="line">                break;</span><br><span class="line"></span><br><span class="line">            // TODO touch</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        onMouseDown( event );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function onPointerMove( event ) &#123;</span><br><span class="line">    if ( scope.enabled === false ) return;</span><br><span class="line">    if(&quot;pointerType&quot; in event)&#123;</span><br><span class="line">        switch ( event.pointerType ) &#123;</span><br><span class="line"></span><br><span class="line">            case &#x27;mouse&#x27;:</span><br><span class="line">            case &#x27;pen&#x27;:</span><br><span class="line">                onMouseMove( event );</span><br><span class="line">                break;</span><br><span class="line"></span><br><span class="line">            // TODO touch</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        onMouseMove( event );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function onPointerUp( event ) &#123;</span><br><span class="line">    if(&quot;pointerType&quot; in event)&#123;</span><br><span class="line">        switch ( event.pointerType ) &#123;</span><br><span class="line"></span><br><span class="line">            case &#x27;mouse&#x27;:</span><br><span class="line">            case &#x27;pen&#x27;:</span><br><span class="line">                onMouseUp( event );</span><br><span class="line">                break;</span><br><span class="line"></span><br><span class="line">            // TODO touch</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        onMouseUp( event );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/16/Cesium%E5%B0%81%E8%A3%85%E4%BA%86%E4%B8%80%E4%B8%AA%E8%BD%A8%E9%81%93%E8%BD%A8%E8%BF%B9%E8%BF%90%E8%A1%8C%E7%9A%84%E7%B1%BB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Cesium封装了一个轨道轨迹运行的类
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/01/potree%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E8%BF%87%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">potree实现截图过程</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 Ly0807
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

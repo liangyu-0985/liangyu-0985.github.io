@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>potree三种点云类型 | Ly0807的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="不同场景下使用不同的点云类型-说明-修改点云三种类型的方法1、在创建点云文件的时候，通过代码可以修改material.shape &#x3D; Potree.PointShape.SQUARE;这里打印Potree.PointShape可以得到一个对象    {SQUARE: 0, CIRCLE: 1, PARABOLOID: 2}通过对象可以发现我们可以直接给material.shape设置数0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="potree三种点云类型">
+<meta property="og:url" content="http://example.com/2019/07/12/potree%E4%B8%89%E7%A7%8D%E7%82%B9%E4%BA%91%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Ly0807的博客">
+<meta property="og:description" content="不同场景下使用不同的点云类型-说明-修改点云三种类型的方法1、在创建点云文件的时候，通过代码可以修改material.shape &#x3D; Potree.PointShape.SQUARE;这里打印Potree.PointShape可以得到一个对象    {SQUARE: 0, CIRCLE: 1, PARABOLOID: 2}通过对象可以发现我们可以直接给material.shape设置数0">
+<meta property="og:locale">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b84834e8e6fb4c029d34769c016a228b~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cc148d9ce450458bb8aa47024d0b111f~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/490f191d64594e1eb9fb86f9b75f69bf~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ba371a1dd6354c6d92a077843c1d2f3d~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5568c0be61cd4063b5fb41eed46cdea7~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2019-07-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-02T13:25:43.971Z">
+<meta property="article:author" content="Ly0807">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="Potree">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b84834e8e6fb4c029d34769c016a228b~tplv-k3u1fbpfcp-watermark.image">
+  
+    <link rel="alternative" href="/atom.xml" title="Ly0807的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/user.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">Ly0807</a></h1>
+		</hgroup>
+
+		
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+			
+				<li><a href="/archives">资料</a></li>
+			
+			</ul>
+		</nav>
+		<nav class="half-header-menu">
+			<a>主页</a>
+			<a>标签</a>
+			<a>链接</a>
+			<a>关于</a>
+		</nav>
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=1869930561&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Cesium/" style="font-size: 15px;">Cesium</a> <a href="/tags/Potree/" style="font-size: 10px;">Potree</a> <a href="/tags/Three/" style="font-size: 10px;">Three</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github网址</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">欢迎转载，转载需带着文章出处链接~~，希望我的经验能帮到你，部分文章仅对遇到的问题提供一个解决思路，对于迫切想要实现功能效果的人来说，希望能稍微沉下心观看，或者直接观看思路部分，或者直接观看完整代码,本文章的代码并不能直接拿来使用，完整代码只是本篇文章解决的问题需要用到的代码，如果直接使用可能会有报错，只要修改一下代码既可使用~~~</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/user.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">资料</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-potree三种点云类型" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/07/12/potree%E4%B8%89%E7%A7%8D%E7%82%B9%E4%BA%91%E7%B1%BB%E5%9E%8B/" class="article-date">
+  	<time datetime="2019-07-11T16:00:00.000Z" itemprop="datePublished">2019-07-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      potree三种点云类型
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Potree/" rel="tag">Potree</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="不同场景下使用不同的点云类型"><a href="#不同场景下使用不同的点云类型" class="headerlink" title="不同场景下使用不同的点云类型"></a>不同场景下使用不同的点云类型</h5><h2 id="说明"><a href="#说明" class="headerlink" title="-说明-"></a>-说明-</h2><h3 id="修改点云三种类型的方法"><a href="#修改点云三种类型的方法" class="headerlink" title="修改点云三种类型的方法"></a>修改点云三种类型的方法</h3><h4 id="1、在创建点云文件的时候，通过代码可以修改"><a href="#1、在创建点云文件的时候，通过代码可以修改" class="headerlink" title="1、在创建点云文件的时候，通过代码可以修改"></a>1、在创建点云文件的时候，通过代码可以修改</h4><p>material.shape &#x3D; Potree.PointShape.SQUARE;<br>这里打印Potree.PointShape可以得到一个对象    {SQUARE: 0, CIRCLE: 1, PARABOLOID: 2}<br>通过对象可以发现我们可以直接给material.shape设置数0，1，2<br>在这里使用的Potree.PointShape对象来进行设置，方便代码的阅读  </p>
+<h4 id="2、点云样式的三种类型，设置使用全大写"><a href="#2、点云样式的三种类型，设置使用全大写" class="headerlink" title="2、点云样式的三种类型，设置使用全大写"></a>2、点云样式的三种类型，设置使用全大写</h4><p>① 方块square<br><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b84834e8e6fb4c029d34769c016a228b~tplv-k3u1fbpfcp-watermark.image" alt="SQUARE"><br>② 圈circle<br><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cc148d9ce450458bb8aa47024d0b111f~tplv-k3u1fbpfcp-watermark.image" alt="CIRCLE"><br>③ 抛物面 paraboloid<br>这里生成的是抛物面<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/490f191d64594e1eb9fb86f9b75f69bf~tplv-k3u1fbpfcp-watermark.image" alt="PARABOLOID"><br>生成的是一些不规则的形状<br>点云样式的使用<br>方块和圈的使用看个人情况，这里主要说一下抛物面的使用<br>如果使用方块和圈，新增加的点云文件会和原先的点云文件重叠<br><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ba371a1dd6354c6d92a077843c1d2f3d~tplv-k3u1fbpfcp-watermark.image" alt="重叠点云显示不符合情况"><br>当点云使用抛物面的使用，新添加的点云文件是可以叠加到抛物面上边的<br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5568c0be61cd4063b5fb41eed46cdea7~tplv-k3u1fbpfcp-watermark.image" alt="重叠点云显示符合情况"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/01/potree%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E8%BF%87%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          potree实现截图过程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/15/potree%E8%A7%A6%E6%91%B8%E4%BF%AE%E6%94%B9/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">potree触摸修改</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 Ly0807
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>potree触摸修改 | Ly0807的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="potree本身只有鼠标事件可以对点、区域、高程等等measurement进行选择，触摸事件只能进行视角的改变-参考-  程序园 JavaScript将触摸事件映射到鼠标事件   -说明-potree触摸事件效果如下：① 单指操作，进行视角的旋转② 双指操作，进行视角的缩放③ 三指操作，进行视角的平移   -主要版本- potreejs 1.6    -思路- 1、查找代码相关位置2、通过js代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="potree触摸修改">
+<meta property="og:url" content="http://example.com/2019/06/15/potree%E8%A7%A6%E6%91%B8%E4%BF%AE%E6%94%B9/index.html">
+<meta property="og:site_name" content="Ly0807的博客">
+<meta property="og:description" content="potree本身只有鼠标事件可以对点、区域、高程等等measurement进行选择，触摸事件只能进行视角的改变-参考-  程序园 JavaScript将触摸事件映射到鼠标事件   -说明-potree触摸事件效果如下：① 单指操作，进行视角的旋转② 双指操作，进行视角的缩放③ 三指操作，进行视角的平移   -主要版本- potreejs 1.6    -思路- 1、查找代码相关位置2、通过js代码">
+<meta property="og:locale">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6acb7d28b885405ca5b0c751e9f01e22~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f461bce364e5482fa603e951331026dc~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/61f441aca53e47bca3c831dda6202a7b~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0757f06de3d24a3499e42c195a5e1b60~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/60557253d81444cb95fb65542a0a151f~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3a17c6cbea6a4bec8b87dbd9b797d7dd~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/714731b5fefa4b9e9f24731b44e307f6~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/66beb7e1278f474ea6909540129de4d4~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/51f8d29644644b118435df241bf6ca16~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1a36693e7dec48149a8c7037b30949bb~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2019-06-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-02T13:25:35.077Z">
+<meta property="article:author" content="Ly0807">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="Potree">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6acb7d28b885405ca5b0c751e9f01e22~tplv-k3u1fbpfcp-watermark.image">
+  
+    <link rel="alternative" href="/atom.xml" title="Ly0807的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/user.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">Ly0807</a></h1>
+		</hgroup>
+
+		
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+			
+				<li><a href="/archives">资料</a></li>
+			
+			</ul>
+		</nav>
+		<nav class="half-header-menu">
+			<a>主页</a>
+			<a>标签</a>
+			<a>链接</a>
+			<a>关于</a>
+		</nav>
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=1869930561&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Cesium/" style="font-size: 15px;">Cesium</a> <a href="/tags/Potree/" style="font-size: 10px;">Potree</a> <a href="/tags/Three/" style="font-size: 10px;">Three</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github网址</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">欢迎转载，转载需带着文章出处链接~~，希望我的经验能帮到你，部分文章仅对遇到的问题提供一个解决思路，对于迫切想要实现功能效果的人来说，希望能稍微沉下心观看，或者直接观看思路部分，或者直接观看完整代码,本文章的代码并不能直接拿来使用，完整代码只是本篇文章解决的问题需要用到的代码，如果直接使用可能会有报错，只要修改一下代码既可使用~~~</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/user.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">资料</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-potree触摸修改" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/06/15/potree%E8%A7%A6%E6%91%B8%E4%BF%AE%E6%94%B9/" class="article-date">
+  	<time datetime="2019-06-14T16:00:00.000Z" itemprop="datePublished">2019-06-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      potree触摸修改
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Potree/" rel="tag">Potree</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="potree本身只有鼠标事件可以对点、区域、高程等等measurement进行选择，触摸事件只能进行视角的改变"><a href="#potree本身只有鼠标事件可以对点、区域、高程等等measurement进行选择，触摸事件只能进行视角的改变" class="headerlink" title="potree本身只有鼠标事件可以对点、区域、高程等等measurement进行选择，触摸事件只能进行视角的改变"></a>potree本身只有鼠标事件可以对点、区域、高程等等measurement进行选择，触摸事件只能进行视角的改变</h5><h2 id="参考"><a href="#参考" class="headerlink" title="-参考-"></a>-参考-</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.voidcn.com/article/p-edterevu-bso.html">程序园 JavaScript将触摸事件映射到鼠标事件</a></li>
+</ul>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="-说明-"></a>-说明-</h2><p>potree触摸事件效果如下：<br>① 单指操作，进行视角的旋转<br>② 双指操作，进行视角的缩放<br>③ 三指操作，进行视角的平移  </p>
+<h2 id="主要版本"><a href="#主要版本" class="headerlink" title="-主要版本-"></a>-主要版本-</h2><blockquote>
+<p>potreejs 1.6  </p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="-思路-"></a>-思路-</h2><blockquote>
+<p>1、查找代码相关位置<br>2、通过js代码进行操作<br>3、通过将touch事件映射到mouse事件上<br>4、通过重写部分touch代码  </p>
+</blockquote>
+<h2 id="过程"><a href="#过程" class="headerlink" title="-过程-"></a>-过程-</h2><h3 id="1、查找代码相关位置"><a href="#1、查找代码相关位置" class="headerlink" title="1、查找代码相关位置"></a>1、查找代码相关位置</h3><p>通过定位touchstart，找到相对应的位置<br><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6acb7d28b885405ca5b0c751e9f01e22~tplv-k3u1fbpfcp-watermark.image" alt="touch事件绑定位置"><br><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f461bce364e5482fa603e951331026dc~tplv-k3u1fbpfcp-watermark.image" alt="touch事件方法"><br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/61f441aca53e47bca3c831dda6202a7b~tplv-k3u1fbpfcp-watermark.image" alt="potree相关操作绑定的类">  </p>
+<h3 id="2、通过js代码进行操作"><a href="#2、通过js代码进行操作" class="headerlink" title="2、通过js代码进行操作"></a>2、通过js代码进行操作</h3><p>最初是想通过js代码来进行操作，将touch的方法都替换成mouse的方法，运行代码会报错，发现事件返回的<code>event</code>参数有所不同，修改event，将event重新赋值，代码如下：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">event=event.touches[0];</span><br></pre></td></tr></table></figure>
+<p>这样会面临一个问题，<code>event.button</code>和<code>event.buttons</code>无法获得，根据<code>event.touches.length</code>来进行判断，代码如下：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">event.button =event.touches.length;</span><br><span class="line">event.buttons =2 ** (event.touches.length - 1);</span><br></pre></td></tr></table></figure>
+<p>这样实现了1根指头代表鼠标左键，2根指头代表鼠标右键，可惜这种方法无法实现将<code>measurement</code>添加成功。  </p>
+<h3 id="3、通过将touch事件映射到mouse事件上"><a href="#3、通过将touch事件映射到mouse事件上" class="headerlink" title="3、通过将touch事件映射到mouse事件上"></a>3、通过将touch事件映射到mouse事件上</h3><p>映射代码如下：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">function touchHandler(event)&#123;</span><br><span class="line">  var touches = event.changedTouches,</span><br><span class="line">    first = touches[0],</span><br><span class="line">    type = &quot;&quot;;</span><br><span class="line">  switch(event.type)&#123;</span><br><span class="line">    case &quot;touchstart&quot;:</span><br><span class="line">      type = &quot;mousedown&quot;;</span><br><span class="line">      break;</span><br><span class="line">    case &quot;touchmove&quot;:</span><br><span class="line">      type = &quot;mousemove&quot;;</span><br><span class="line">      break;        </span><br><span class="line">    case &quot;touchend&quot;:</span><br><span class="line">      type = &quot;mouseup&quot;;</span><br><span class="line">      break;</span><br><span class="line">    default:</span><br><span class="line">      return;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // initMouseEvent方法传参，可以百度查找;</span><br><span class="line">  var simulatedEvent = document.createEvent(&quot;MouseEvent&quot;);</span><br><span class="line">  simulatedEvent.initMouseEvent(type, true, true, window, 1, </span><br><span class="line">    first.screenX, first.screenY, </span><br><span class="line">    first.clientX, first.clientY, false, </span><br><span class="line">    false, false, false, 0/*left*/, null);</span><br><span class="line">  first.target.dispatchEvent(simulatedEvent);</span><br><span class="line">  event.preventDefault();</span><br><span class="line">&#125;</span><br><span class="line">function init() &#123;</span><br><span class="line">  document.addEventListener(&quot;touchstart&quot;, touchHandler, true);</span><br><span class="line">  document.addEventListener(&quot;touchmove&quot;, touchHandler, true);</span><br><span class="line">  document.addEventListener(&quot;touchend&quot;, touchHandler, true);</span><br><span class="line">  document.addEventListener(&quot;touchcancel&quot;, touchHandler, true);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>经调整修改，整合到potree中，代码如下：<br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0757f06de3d24a3499e42c195a5e1b60~tplv-k3u1fbpfcp-watermark.image" alt="potree整合代码"><br>这时发现多指操作时，一直会触发单指，这里折腾了好长时间，然后换了其他方法。  </p>
+<h3 id="4、通过重写部分touch代码"><a href="#4、通过重写部分touch代码" class="headerlink" title="4、通过重写部分touch代码"></a>4、通过重写部分touch代码</h3><p>在新增的时候touch变为增加，不可操控视角<br>不新增的时候touch变为视角操控  </p>
+<h4 id="4-1、声明是否增加measure变量isAddM到全局变量中"><a href="#4-1、声明是否增加measure变量isAddM到全局变量中" class="headerlink" title="4.1、声明是否增加measure变量isAddM到全局变量中"></a>4.1、声明<code>是否增加measure</code>变量<code>isAddM</code>到全局变量中</h4><p>这里我使用true为不触摸，false为触摸  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.isAddM =true;</span><br></pre></td></tr></table></figure>
+<h4 id="4-2、声明触摸手指数量变量touchNum到全局变量中"><a href="#4-2、声明触摸手指数量变量touchNum到全局变量中" class="headerlink" title="4.2、声明触摸手指数量变量touchNum到全局变量中"></a>4.2、声明<code>触摸手指数量</code>变量<code>touchNum</code>到全局变量中</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.touchNum =0;</span><br></pre></td></tr></table></figure>
+<h4 id="4-3、找到创建measure的地方"><a href="#4-3、找到创建measure的地方" class="headerlink" title="4.3、找到创建measure的地方"></a>4.3、找到创建measure的地方</h4><p>① 首先找到PointPanel，查看新增方法，发现方法为<code>marker_added</code><br><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/60557253d81444cb95fb65542a0a151f~tplv-k3u1fbpfcp-watermark.image" alt="PointPanel代码位置"><br>② 查找<code>marker_added</code>，定位到方法<code>addMarker</code><br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3a17c6cbea6a4bec8b87dbd9b797d7dd~tplv-k3u1fbpfcp-watermark.image" alt="marker_added代码位置"><br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/714731b5fefa4b9e9f24731b44e307f6~tplv-k3u1fbpfcp-watermark.image" alt="addMarker方法"><br>③ 触发时改变<code>isAddM</code>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">isAddM =false;</span><br></pre></td></tr></table></figure>
+<h4 id="4-4、修改onTouchStart，onTouchEnd，onTouchMove方法"><a href="#4-4、修改onTouchStart，onTouchEnd，onTouchMove方法" class="headerlink" title="4.4、修改onTouchStart，onTouchEnd，onTouchMove方法"></a>4.4、修改<code>onTouchStart</code>，<code>onTouchEnd</code>，<code>onTouchMove</code>方法</h4><p>将原先的代码放到<code>isAddM ==true</code>的位置，三个方法都要修改，如下所示：<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/66beb7e1278f474ea6909540129de4d4~tplv-k3u1fbpfcp-watermark.image" alt="修改后的touch方法">  </p>
+<h4 id="4-5、实现双指增加measure"><a href="#4-5、实现双指增加measure" class="headerlink" title="4.5、实现双指增加measure"></a>4.5、实现双指增加measure</h4><p>除了PointPanel点击后可以直接增加，其他的panel都需要通过鼠标右键来增加，这里通过增加完成后随意触发其他事件或者阻止冒泡即可成功增加。<br>① touchstart判断多指，代码如下：<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/51f8d29644644b118435df241bf6ca16~tplv-k3u1fbpfcp-watermark.image" alt="修改touchNum的数量即可"><br>② touchend结束时，判断如果是多指就退出，代码如下：<br><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1a36693e7dec48149a8c7037b30949bb~tplv-k3u1fbpfcp-watermark.image" alt="先减1，如果大于0代表多指"><br>既可实现效果  </p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="-完整代码-"></a>-完整代码-</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">onTouchStart (e) &#123;</span><br><span class="line">		if(isAddM)&#123;</span><br><span class="line">			if (this.logMessages) console.log(this.constructor.name + &#x27;: onTouchStart&#x27;);</span><br><span class="line"></span><br><span class="line">			e.preventDefault();</span><br><span class="line"></span><br><span class="line">			if (e.touches.length === 1) &#123;</span><br><span class="line">				let rect = this.domElement.getBoundingClientRect();</span><br><span class="line">				let x = e.touches[0].pageX - rect.left;</span><br><span class="line">				let y = e.touches[0].pageY - rect.top;</span><br><span class="line">				this.mouse.set(x, y);</span><br><span class="line"></span><br><span class="line">				this.startDragging(null);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			</span><br><span class="line">			for (let inputListener of this.getSortedListeners()) &#123;</span><br><span class="line">				inputListener.dispatchEvent(&#123;</span><br><span class="line">					type: e.type,</span><br><span class="line">					touches: e.touches,</span><br><span class="line">					changedTouches: e.changedTouches</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			touchNum ++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	onTouchEnd (e) &#123;</span><br><span class="line">		if(isAddM)&#123;</span><br><span class="line">			if (this.logMessages) console.log(this.constructor.name + &#x27;: onTouchEnd&#x27;);</span><br><span class="line"></span><br><span class="line">			e.preventDefault();</span><br><span class="line"></span><br><span class="line">			for (let inputListener of this.getSortedListeners()) &#123;</span><br><span class="line">				inputListener.dispatchEvent(&#123;</span><br><span class="line">					type: &#x27;drop&#x27;,</span><br><span class="line">					drag: this.drag,</span><br><span class="line">					viewer: this.viewer</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			this.drag = null;</span><br><span class="line"></span><br><span class="line">			for (let inputListener of this.getSortedListeners()) &#123;</span><br><span class="line">				inputListener.dispatchEvent(&#123;</span><br><span class="line">					type: e.type,</span><br><span class="line">					touches: e.touches,</span><br><span class="line">					changedTouches: e.changedTouches</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			touchNum --;</span><br><span class="line">			if(touchNum &gt;=1)&#123;</span><br><span class="line">				touchNum =0;</span><br><span class="line">				isAddM =true;</span><br><span class="line">				e.preventDefault();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	onTouchMove (e) &#123;</span><br><span class="line">		if(isAddM)&#123;</span><br><span class="line">			if (this.logMessages) console.log(this.constructor.name + &#x27;: onTouchMove&#x27;);</span><br><span class="line"></span><br><span class="line">			e.preventDefault();</span><br><span class="line"></span><br><span class="line">			if (e.touches.length === 1) &#123;</span><br><span class="line">				let rect = this.domElement.getBoundingClientRect();</span><br><span class="line">				let x = e.touches[0].pageX - rect.left;</span><br><span class="line">				let y = e.touches[0].pageY - rect.top;</span><br><span class="line">				this.mouse.set(x, y);</span><br><span class="line"></span><br><span class="line">				if (this.drag) &#123;</span><br><span class="line">					this.drag.mouse = 1;</span><br><span class="line"></span><br><span class="line">					this.drag.lastDrag.x = x - this.drag.end.x;</span><br><span class="line">					this.drag.lastDrag.y = y - this.drag.end.y;</span><br><span class="line"></span><br><span class="line">					this.drag.end.set(x, y);</span><br><span class="line"></span><br><span class="line">					if (this.logMessages) console.log(this.constructor.name + &#x27;: drag: &#x27;);</span><br><span class="line">					for (let inputListener of this.getSortedListeners()) &#123;</span><br><span class="line">						inputListener.dispatchEvent(&#123;</span><br><span class="line">							type: &#x27;drag&#x27;,</span><br><span class="line">							drag: this.drag,</span><br><span class="line">							viewer: this.viewer</span><br><span class="line">						&#125;);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			for (let inputListener of this.getSortedListeners()) &#123;</span><br><span class="line">				inputListener.dispatchEvent(&#123;</span><br><span class="line">					type: e.type,</span><br><span class="line">					touches: e.touches,</span><br><span class="line">					changedTouches: e.changedTouches</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		// DEBUG CODE</span><br><span class="line">		// let debugTouches = [...e.touches, &#123;</span><br><span class="line">		//	pageX: this.domElement.clientWidth / 2,</span><br><span class="line">		//	pageY: this.domElement.clientHeight / 2&#125;];</span><br><span class="line">		// for(let inputListener of this.getSortedListeners())&#123;</span><br><span class="line">		//	inputListener.dispatchEvent(&#123;</span><br><span class="line">		//		type: e.type,</span><br><span class="line">		//		touches: debugTouches,</span><br><span class="line">		//		changedTouches: e.changedTouches</span><br><span class="line">		//	&#125;);</span><br><span class="line">		// &#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/12/potree%E4%B8%89%E7%A7%8D%E7%82%B9%E4%BA%91%E7%B1%BB%E5%9E%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          potree三种点云类型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/15/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello Hexo</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 Ly0807
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

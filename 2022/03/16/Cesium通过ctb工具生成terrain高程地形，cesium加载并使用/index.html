@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Cesium通过ctb工具生成terrain高程地形，cesium加载并使用 | Ly0807的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="-参考-  Cesium 生成terrain地形数据—-CTB方式及步骤 github地址：cesium-terrain-builder工具 Cesium实战(二十四)地形数据Tomcat部署(该文章可能需要购买VIP才能观看) nginx添加response响应头 cesium 之加载地形图 Terrain 篇（附源码下载）   -说明-本文分为两部分：  1、通过ctb工具生成terrain文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cesium通过ctb工具生成terrain高程地形，cesium加载并使用">
+<meta property="og:url" content="http://example.com/2022/03/16/Cesium%E9%80%9A%E8%BF%87ctb%E5%B7%A5%E5%85%B7%E7%94%9F%E6%88%90terrain%E9%AB%98%E7%A8%8B%E5%9C%B0%E5%BD%A2%EF%BC%8Ccesium%E5%8A%A0%E8%BD%BD%E5%B9%B6%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="Ly0807的博客">
+<meta property="og:description" content="-参考-  Cesium 生成terrain地形数据—-CTB方式及步骤 github地址：cesium-terrain-builder工具 Cesium实战(二十四)地形数据Tomcat部署(该文章可能需要购买VIP才能观看) nginx添加response响应头 cesium 之加载地形图 Terrain 篇（附源码下载）   -说明-本文分为两部分：  1、通过ctb工具生成terrain文">
+<meta property="og:locale">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/99ee60d78dcb487eb9e4f3d67203ed98~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2022-03-15T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-02T13:29:03.724Z">
+<meta property="article:author" content="Ly0807">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="Cesium">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/99ee60d78dcb487eb9e4f3d67203ed98~tplv-k3u1fbpfcp-watermark.image">
+  
+    <link rel="alternative" href="/atom.xml" title="Ly0807的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/user.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">Ly0807</a></h1>
+		</hgroup>
+
+		
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+			
+				<li><a href="/archives">资料</a></li>
+			
+			</ul>
+		</nav>
+		<nav class="half-header-menu">
+			<a>主页</a>
+			<a>标签</a>
+			<a>链接</a>
+			<a>关于</a>
+		</nav>
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=1869930561&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Cesium/" style="font-size: 15px;">Cesium</a> <a href="/tags/Potree/" style="font-size: 10px;">Potree</a> <a href="/tags/Three/" style="font-size: 10px;">Three</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github网址</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">欢迎转载，转载需带着文章出处链接~~，希望我的经验能帮到你，部分文章仅对遇到的问题提供一个解决思路，对于迫切想要实现功能效果的人来说，希望能稍微沉下心观看，或者直接观看思路部分，或者直接观看完整代码,本文章的代码并不能直接拿来使用，完整代码只是本篇文章解决的问题需要用到的代码，如果直接使用可能会有报错，只要修改一下代码既可使用~~~</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/user.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">资料</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Cesium通过ctb工具生成terrain高程地形，cesium加载并使用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/16/Cesium%E9%80%9A%E8%BF%87ctb%E5%B7%A5%E5%85%B7%E7%94%9F%E6%88%90terrain%E9%AB%98%E7%A8%8B%E5%9C%B0%E5%BD%A2%EF%BC%8Ccesium%E5%8A%A0%E8%BD%BD%E5%B9%B6%E4%BD%BF%E7%94%A8/" class="article-date">
+  	<time datetime="2022-03-15T16:00:00.000Z" itemprop="datePublished">2022-03-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Cesium通过ctb工具生成terrain高程地形，cesium加载并使用
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cesium/" rel="tag">Cesium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="参考"><a href="#参考" class="headerlink" title="-参考-"></a>-参考-</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013821237/article/details/82999006">Cesium 生成terrain地形数据—-CTB方式及步骤</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/geo-data/cesium-terrain-builder">github地址：cesium-terrain-builder工具</a></li>
+<li><a target="_blank" rel="noopener" href="http://cesium.xin/wordpress/archives/cesium-terrain-tomcat.html">Cesium实战(二十四)地形数据Tomcat部署(该文章可能需要购买VIP才能观看)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/daowangzhizhu-pt/p/8575043.html">nginx添加response响应头</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/40913210">cesium 之加载地形图 Terrain 篇（附源码下载）</a></li>
+</ul>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="-说明-"></a>-说明-</h2><p>本文分为两部分：</p>
+<ul>
+<li>1、通过ctb工具生成terrain文件，在cesium中使用。  </li>
+<li>2、ctb生成gzip压缩terrain文件，如果进行处理。<br>通过ctb（网上有人修改了ctb的源码重新编译生成的window版本）将tif（DEM）文件转换为terrain文件。当需要部署在linux服务器上，后端找到ctb的ctbdocker容器，转换的terrain文件普遍比现成的版本小。</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="-思路-"></a>-思路-</h2><blockquote>
+<ul>
+<li>1、通过ctb工具将tif文件转成terrain文件  </li>
+<li>2、cesium加载和使用  </li>
+<li>3、后端代码集成下使用ctbdocker（或者说使用ctb源码无修改版本）生成gzip压缩文件的处理</li>
+</ul>
+</blockquote>
+<h2 id="过程"><a href="#过程" class="headerlink" title="-过程-"></a>-过程-</h2><p>1、通过ctb（网上有人修改了ctb的源码重新编译生成的window版本）将tif（DEM）文件转换为terrain文件  </p>
+<ul>
+<li>1.1、配置环境变量，该包为第一个参考网站下载的CTB现成版本，下载可能需要CSDN积分  <blockquote>
+<p>a.修改Path系统变量，添加D:\soft\CTB\ctb;<br>b.添加名称为GDAL_DATA，值为D:\soft\CTB\gdal-data的系统变量  </p>
+</blockquote>
+</li>
+<li>1.2、使用CTB生成.terrain文件，cmd命令如下：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctb-tile -o (生成文件路径)D:\terrain\ -s 14 -e 0 -r nearest -c 4 (地形tif文件)D:\tif_file.tif</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>2、cesium加载terrain文件，将DEM放到项目下或者nginx下（其他服务器也可以，我这里使用的nginx）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 1、直接加载高程地形</span><br><span class="line">const viewer = new Cesium.Viewer(&#x27;cesiumContainer&#x27;, &#123;</span><br><span class="line">  terrainProvider: new Cesium.CesiumTerrainProvider(&#123;</span><br><span class="line">    url: &#x27;http://localhost:9001/DEM&#x27;,</span><br><span class="line">    isSct: true,</span><br><span class="line">  &#125;),</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 2、按需通过JS加载，这个方法可能比较笨重</span><br><span class="line">let terrainObj = &#123; url: &quot;http://localhost:9001/DEM&quot;, requestWaterMask: false, requestVertexNormals: false, proxyUrl: &quot;&quot; &#125;;</span><br><span class="line">addTerrainLayer(terrainObj);</span><br><span class="line">function addTerrainLayer(terrainObj) &#123;</span><br><span class="line">  if (terrainObj.url &amp;&amp; terrainObj.url.replace(/(^s*)|(s*$)/g, &quot;&quot;).length &gt; 0) &#123;</span><br><span class="line">    var provider = &#123;&#125;;</span><br><span class="line">    if (terrainObj.proxyUrl &amp;&amp; terrainObj.proxyUrl.length &gt; 0)</span><br><span class="line">      provider = &#123; proxy: new Cesium.DefaultProxy(terrainObj.proxyUrl), url: terrainObj.url, requestWaterMask: terrainObj.requestWaterMask, requestVertexNormals: terrainObj.requestVertexNormals &#125;;</span><br><span class="line">    else</span><br><span class="line">      provider = &#123; url: terrainObj.url, requestWaterMask: terrainObj.requestWaterMask, requestVertexNormals: terrainObj.requestVertexNormals &#125;;</span><br><span class="line"></span><br><span class="line">    var terrainProvider = new Cesium.CesiumTerrainProvider(provider);</span><br><span class="line">    viewer.terrainProvider = terrainProvider;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、后端集成docker（部署linux），生成gzip压缩的terrain处理。直接按照步骤2进行会加载不出来，这时对请求的response添加请求头，nginx修改根目录&#x2F;conf&#x2F;nginx.conf文件，对http &gt; server添加请求头</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add_header Content-Encoding gzip;</span><br></pre></td></tr></table></figure>
+<p>整体配置如下：<br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/99ee60d78dcb487eb9e4f3d67203ed98~tplv-k3u1fbpfcp-watermark.image" alt="nginx配置文件添加response请求头"></p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="-完整代码-"></a>-完整代码-</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;加载terrain文件&lt;/title&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;Libs/cesium/Build/Cesium/Widgets/widgets.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=&quot;cesiumContainer&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- 三维球加载 --&gt;</span><br><span class="line">  &lt;script src=&quot;Libs/cesium/Build/CesiumUnminified/Cesium.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    const viewer = new Cesium.Viewer(&#x27;cesiumContainer&#x27;, &#123;</span><br><span class="line">      // terrainProvider: new Cesium.CesiumTerrainProvider(&#123;</span><br><span class="line">      //   url: &#x27;http://localhost:9000/terrain/64b5040050da11ec9523d157e1306660/&#x27;,</span><br><span class="line">      //   isSct: true,</span><br><span class="line">      // &#125;),</span><br><span class="line">      imageryProvider: new Cesium.WebMapTileServiceImageryProvider(&#123;</span><br><span class="line">        url: &#x27;http://t&#123;s&#125;.tianditu.com/img_w/wmts?service=wmts&amp;request=GetTile&amp;version=1.0.0&amp;LAYER=img&amp;tileMatrixSet=w&amp;TileMatrix=&#123;TileMatrix&#125;&amp;TileRow=&#123;TileRow&#125;&amp;TileCol=&#123;TileCol&#125;&amp;style=default&amp;format=tiles&amp;tk=40ec5239dc860b604c48ba411410aa93&#x27;,</span><br><span class="line">        layer: &quot;天地图影像&quot;,</span><br><span class="line">        style: &quot;default&quot;,</span><br><span class="line">        format: &quot;image/jpeg&quot;,</span><br><span class="line">        subdomains: [&#x27;0&#x27;, &#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;, &#x27;7&#x27;, &#x27;8&#x27;, &#x27;9&#x27;, &#x27;10&#x27;, &#x27;11&#x27;, &#x27;12&#x27;, &#x27;13&#x27;, &#x27;14&#x27;, &#x27;15&#x27;, &#x27;16&#x27;, &#x27;17&#x27;, &#x27;18&#x27;],</span><br><span class="line">        tileMatrixSetID: &quot;GoogleMapsCompatible&quot;,</span><br><span class="line">      &#125;),</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    // 添加标记点</span><br><span class="line">    viewer.entities.add(&#123;</span><br><span class="line">      position: Cesium.Cartesian3.fromDegrees(116.4170284568,25.1896027799),</span><br><span class="line">      label: &#123;</span><br><span class="line">        text: &quot;dem点&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      name: &quot;dem点&quot;,</span><br><span class="line">      point: &#123;</span><br><span class="line">        pixelSize: 10,</span><br><span class="line">        color: Cesium.Color.YELLOW,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    // 添加高程地形</span><br><span class="line">    let terrainObj = &#123; url: &quot;http://localhost:9001/DEM&quot;, requestWaterMask: false, requestVertexNormals: false, proxyUrl: &quot;&quot; &#125;;</span><br><span class="line">    addTerrainLayer(terrainObj)</span><br><span class="line">    function addTerrainLayer(terrainObj) &#123;</span><br><span class="line">      if (terrainObj.url &amp;&amp; terrainObj.url.replace(/(^s*)|(s*$)/g, &quot;&quot;).length &gt; 0) &#123;</span><br><span class="line">        var provider = &#123;&#125;;</span><br><span class="line">        if (terrainObj.proxyUrl &amp;&amp; terrainObj.proxyUrl.length &gt; 0)</span><br><span class="line">          provider = &#123; proxy: new Cesium.DefaultProxy(terrainObj.proxyUrl), url: terrainObj.url, requestWaterMask: terrainObj.requestWaterMask, requestVertexNormals: terrainObj.requestVertexNormals &#125;;</span><br><span class="line">        else</span><br><span class="line">          provider = &#123; url: terrainObj.url, requestWaterMask: terrainObj.requestWaterMask, requestVertexNormals: terrainObj.requestVertexNormals &#125;;</span><br><span class="line"></span><br><span class="line">        debugger</span><br><span class="line">        var terrainProvider = new Cesium.CesiumTerrainProvider(provider);</span><br><span class="line">        viewer.terrainProvider = terrainProvider;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/04/10/Cesium%E5%8A%A0%E8%BD%BD%E9%AB%98%E7%A8%8B%E5%9C%B0%E5%BD%A2%E6%96%87%E4%BB%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Cesium加载高程地形文件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/12/Cesiumjs+Threejs%E5%BC%80%E5%8F%91%EF%BC%8C%E8%A7%A3%E5%86%B3%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%9C%B0%E7%90%83%E8%83%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Cesiumjs+Threejs开发，解决模型在地球背面显示的问题</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 Ly0807
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

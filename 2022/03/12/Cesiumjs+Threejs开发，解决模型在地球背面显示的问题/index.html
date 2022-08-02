@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Cesiumjs+Threejs开发，解决模型在地球背面显示的问题 | Ly0807的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="模型在地球背面时，本应该隐藏的模型，此时正在显示。-参考-  CesiumJs+ThreeJs实测   cesium与three.js，解决three.js 高版本模型出不来的问题   CesiumJs获取中心坐标   -说明-为什么出现了问题？① Cesiumjs和Threejs集成的原理，通过定位两个DOM节点，使两个DOM重叠，将Threejs放到Cesiumjs上。② 局部查看，Three">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cesiumjs+Threejs开发，解决模型在地球背面显示的问题">
+<meta property="og:url" content="http://example.com/2022/03/12/Cesiumjs+Threejs%E5%BC%80%E5%8F%91%EF%BC%8C%E8%A7%A3%E5%86%B3%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%9C%B0%E7%90%83%E8%83%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Ly0807的博客">
+<meta property="og:description" content="模型在地球背面时，本应该隐藏的模型，此时正在显示。-参考-  CesiumJs+ThreeJs实测   cesium与three.js，解决three.js 高版本模型出不来的问题   CesiumJs获取中心坐标   -说明-为什么出现了问题？① Cesiumjs和Threejs集成的原理，通过定位两个DOM节点，使两个DOM重叠，将Threejs放到Cesiumjs上。② 局部查看，Three">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-03-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-02T13:28:54.665Z">
+<meta property="article:author" content="Ly0807">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="Cesium">
+<meta property="article:tag" content="Three">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Ly0807的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/user.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">Ly0807</a></h1>
+		</hgroup>
+
+		
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+			
+				<li><a href="/archives">资料</a></li>
+			
+			</ul>
+		</nav>
+		<nav class="half-header-menu">
+			<a>主页</a>
+			<a>标签</a>
+			<a>链接</a>
+			<a>关于</a>
+		</nav>
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=1869930561&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Cesium/" style="font-size: 15px;">Cesium</a> <a href="/tags/Potree/" style="font-size: 10px;">Potree</a> <a href="/tags/Three/" style="font-size: 10px;">Three</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github网址</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">欢迎转载，转载需带着文章出处链接~~，希望我的经验能帮到你，部分文章仅对遇到的问题提供一个解决思路，对于迫切想要实现功能效果的人来说，希望能稍微沉下心观看，或者直接观看思路部分，或者直接观看完整代码,本文章的代码并不能直接拿来使用，完整代码只是本篇文章解决的问题需要用到的代码，如果直接使用可能会有报错，只要修改一下代码既可使用~~~</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/user.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">资料</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Cesiumjs+Threejs开发，解决模型在地球背面显示的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/12/Cesiumjs+Threejs%E5%BC%80%E5%8F%91%EF%BC%8C%E8%A7%A3%E5%86%B3%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%9C%B0%E7%90%83%E8%83%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
+  	<time datetime="2022-03-11T16:00:00.000Z" itemprop="datePublished">2022-03-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Cesiumjs+Threejs开发，解决模型在地球背面显示的问题
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cesium/" rel="tag">Cesium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Three/" rel="tag">Three</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="模型在地球背面时，本应该隐藏的模型，此时正在显示。"><a href="#模型在地球背面时，本应该隐藏的模型，此时正在显示。" class="headerlink" title="模型在地球背面时，本应该隐藏的模型，此时正在显示。"></a>模型在地球背面时，本应该隐藏的模型，此时正在显示。</h5><h2 id="参考"><a href="#参考" class="headerlink" title="-参考-"></a>-参考-</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36266612/article/details/88943501">CesiumJs+ThreeJs实测</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011540323/article/details/103522075">cesium与three.js，解决three.js 高版本模型出不来的问题</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/engineer_he/article/details/96478540">CesiumJs获取中心坐标</a></li>
+</ul>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="-说明-"></a>-说明-</h2><p>为什么出现了问题？<br>① Cesiumjs和Threejs集成的原理，通过定位两个DOM节点，使两个DOM重叠，将Threejs放到Cesiumjs上。<br>② 局部查看，Threejs的Mesh显示在对应的位置上。<br>③ 转动视角后，在地球背面本应该消失的模型，因为没有物体遮挡，所以模型还存在，出现了BUG。   </p>
+<h2 id="主要版本"><a href="#主要版本" class="headerlink" title="-主要版本-"></a>-主要版本-</h2><blockquote>
+<p>three.js r123，不仅限于这个版本<br>cesium.js 1.76，不仅限于这个版本  </p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="-思路-"></a>-思路-</h2><blockquote>
+<ul>
+<li>1、查找代码相关位置  </li>
+<li>2、将Pointer替换为Mouse  </li>
+<li>3、event.pointerType无法获取，故直接跳过这步，将里边的方法拿出来</li>
+</ul>
+</blockquote>
+<h2 id="过程"><a href="#过程" class="headerlink" title="-过程-"></a>-过程-</h2><h3 id="1、Cesium和Three集成"><a href="#1、Cesium和Three集成" class="headerlink" title="1、Cesium和Three集成"></a>1、Cesium和Three集成</h3><p>官方给出的cesium和threejs结合的方案，在这里将对loop代码进行规整，代码如下所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function loop() &#123;</span><br><span class="line">    requestAnimationFrame(loop); //loop</span><br><span class="line">    renderCesium();  //渲染cesium</span><br><span class="line">    renderThree();   //渲染three</span><br><span class="line">    renderCamera(); // 视角调整</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、获取中心点坐标"><a href="#2、获取中心点坐标" class="headerlink" title="2、获取中心点坐标"></a>2、获取中心点坐标</h3><p>在renderCamera视角调整代码处，修改增加获取当前视角下中心坐标点的代码，这里代码写成2部分，方便代码观看，callback回调在步骤3。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 处理三维模型显示隐藏问题</span><br><span class="line">function getCenterPosition(callback) &#123;</span><br><span class="line">    var viewer = cesium.viewer;</span><br><span class="line">    var result = viewer.camera.pickEllipsoid(new Cesium.Cartesian2(viewer.canvas.clientWidth / 2, viewer.canvas</span><br><span class="line">        .clientHeight / 2));</span><br><span class="line">    var curPosition = Cesium.Ellipsoid.WGS84.cartesianToCartographic(result);</span><br><span class="line">    var lon = curPosition.longitude * 180 / Math.PI;</span><br><span class="line">    var lat = curPosition.latitude * 180 / Math.PI;</span><br><span class="line">    var height = getHeight(); // 获取高度</span><br><span class="line">    var now = getCurrentExtent(); // 获取当前视角下的经纬度的范围</span><br><span class="line">    </span><br><span class="line">    callback(lon,lat,height,now);</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">        lon: lon,</span><br><span class="line">        lat: lat,</span><br><span class="line">        height: height</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3、动态修改Threejs模型显隐"><a href="#3、动态修改Threejs模型显隐" class="headerlink" title="3、动态修改Threejs模型显隐"></a>3、动态修改Threejs模型显隐</h3><p>在renderCamera视角调整代码处，调用该方法，对模型进行显示隐藏处理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">getCenterPosition((lon, lat, height, now) =&gt; &#123;</span><br><span class="line">    let hei = now.height;</span><br><span class="line">    // 地球背面模型隐藏 </span><br><span class="line">    for (let k in modelDict) &#123;</span><br><span class="line">        let item = modelDict[k];</span><br><span class="line">        var pos = item.getPosition();</span><br><span class="line">        let lon1 = pos.lon;</span><br><span class="line">        let lat1 = pos.lat;</span><br><span class="line">        let hei1 = pos.hei;</span><br><span class="line">        if (Math.abs(lon1 - lon) &gt; 300) &#123;</span><br><span class="line">            if (lon1 &lt; 0) &#123;</span><br><span class="line">                lon1 += 360</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                lon += 360</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (Math.abs(lon1 - lon) &gt; 90 + hei1 / 100000 || Math.abs(lat1 - lat) &gt; 60) &#123;</span><br><span class="line">            item.setVisible(false);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            item.setVisible(true);</span><br><span class="line">        &#125;</span><br><span class="line">        // 优化显示</span><br><span class="line">        if (hei - hei1 &lt; 2000000 &amp;&amp; Math.abs(lon - lon1) &lt; 6 &amp;&amp; Math.abs(lat - lat1) &lt; 6) &#123;</span><br><span class="line">            item.setVisible(true);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            item.setVisible(false);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="-完整代码-"></a>-完整代码-</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br></pre></td><td class="code"><pre><span class="line">function loop() &#123;</span><br><span class="line">  requestAnimationFrame(loop);</span><br><span class="line">  renderCesium();  //渲染cesium</span><br><span class="line">  renderThree();   //渲染three</span><br><span class="line">  renderCamera();</span><br><span class="line"></span><br><span class="line">  // nowDate += 1000 * 60</span><br><span class="line">  // var utc=Cesium.JulianDate.fromDate(new Date(nowDate)); // 获取当前时间</span><br><span class="line">  // cesium.viewer.clockViewModel.currentTime = Cesium.JulianDate.addHours(utc,0,new Cesium.JulianDate()); // 设置时间，第二个是时差</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function renderCesium() &#123;</span><br><span class="line">  cesium.viewer.render();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function renderThree() &#123;</span><br><span class="line">  var width = ThreeContainer.clientWidth;</span><br><span class="line">  var height = ThreeContainer.clientHeight;</span><br><span class="line">  three.renderer.setSize(width, height);</span><br><span class="line">  three.renderer.render(three.scene, three.camera);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function renderCamera() &#123;</span><br><span class="line">  // register Three.js scene with Cesium</span><br><span class="line">  three.camera.fov = Cesium.Math.toDegrees(cesium.viewer.camera.frustum.fovy) // ThreeJS FOV is vertical</span><br><span class="line">  three.camera.updateProjectionMatrix();</span><br><span class="line"></span><br><span class="line">  // Clone Cesium Camera projection position so the</span><br><span class="line">  // Three.js Object will appear to be at the same place as above the Cesium Globe</span><br><span class="line"></span><br><span class="line">  three.camera.matrixAutoUpdate = false;</span><br><span class="line">  var cvm = cesium.viewer.camera.viewMatrix;</span><br><span class="line">  var civm = cesium.viewer.camera.inverseViewMatrix;</span><br><span class="line">  three.camera.lookAt(new THREE.Vector3(0, 0, 0));</span><br><span class="line">  three.camera.matrixWorld.set(</span><br><span class="line">    civm[0], civm[4], civm[8], civm[12],</span><br><span class="line">    civm[1], civm[5], civm[9], civm[13],</span><br><span class="line">    civm[2], civm[6], civm[10], civm[14],</span><br><span class="line">    civm[3], civm[7], civm[11], civm[15]</span><br><span class="line">  );</span><br><span class="line">  three.camera.matrixWorldInverse.set(</span><br><span class="line">    cvm[0], cvm[4], cvm[8], cvm[12],</span><br><span class="line">    cvm[1], cvm[5], cvm[9], cvm[13],</span><br><span class="line">    cvm[2], cvm[6], cvm[10], cvm[14],</span><br><span class="line">    cvm[3], cvm[7], cvm[11], cvm[15]</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  var width = ThreeContainer.clientWidth;</span><br><span class="line">  var height = ThreeContainer.clientHeight;</span><br><span class="line">  var aspect = width / height;</span><br><span class="line">  three.camera.aspect = aspect;</span><br><span class="line">  three.camera.updateProjectionMatrix();</span><br><span class="line"></span><br><span class="line">  getCenterPosition((lon, lat, height, now) =&gt; &#123;</span><br><span class="line">    let hei = now.height;</span><br><span class="line">    // 地球背面模型隐藏 </span><br><span class="line">    for (let k in modelDict) &#123;</span><br><span class="line">      let item = modelDict[k];</span><br><span class="line">      var pos = item.getPosition();</span><br><span class="line">      let lon1 = pos.lon;</span><br><span class="line">      let lat1 = pos.lat;</span><br><span class="line">      let hei1 = pos.hei;</span><br><span class="line">      if (Math.abs(lon1 - lon) &gt; 300) &#123;</span><br><span class="line">        if (lon1 &lt; 0) &#123;</span><br><span class="line">          lon1 += 360</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          lon += 360</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      if (Math.abs(lon1 - lon) &gt; 90 + hei1 / 100000 || Math.abs(lat1 - lat) &gt; 60) &#123;</span><br><span class="line">        item.setVisible(false);</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        item.setVisible(true);</span><br><span class="line">      &#125;</span><br><span class="line">      // 优化显示</span><br><span class="line">      if (hei - hei1 &lt; 2000000 &amp;&amp; Math.abs(lon - lon1) &lt; 6 &amp;&amp; Math.abs(lat - lat1) &lt; 6) &#123;</span><br><span class="line">        item.setVisible(true);</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        item.setVisible(false);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">// 处理三维模型显示隐藏问题</span><br><span class="line">function getCenterPosition(callback) &#123;</span><br><span class="line">    var viewer = cesium.viewer;</span><br><span class="line">    var result = viewer.camera.pickEllipsoid(new Cesium.Cartesian2(viewer.canvas.clientWidth / 2, viewer.canvas</span><br><span class="line">        .clientHeight / 2));</span><br><span class="line">    var curPosition = Cesium.Ellipsoid.WGS84.cartesianToCartographic(result);</span><br><span class="line">    var lon = curPosition.longitude * 180 / Math.PI;</span><br><span class="line">    var lat = curPosition.latitude * 180 / Math.PI;</span><br><span class="line">    var height = getHeight();</span><br><span class="line">    var now = getCurrentExtent();</span><br><span class="line">    </span><br><span class="line">    callback(lon,lat,height,now);</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">        lon: lon,</span><br><span class="line">        lat: lat,</span><br><span class="line">        height: height</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">/* 获取camera高度  */</span><br><span class="line">function getHeight() &#123;</span><br><span class="line">    var viewer = cesium.viewer;</span><br><span class="line">    if (viewer) &#123;</span><br><span class="line">        var scene = viewer.scene;</span><br><span class="line">        var ellipsoid = scene.globe.ellipsoid;</span><br><span class="line">        var height = ellipsoid.cartesianToCartographic(viewer.camera.position).height;</span><br><span class="line">        return height;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">function getCurrentExtent() &#123;</span><br><span class="line">    // 范围对象</span><br><span class="line">    var extent = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    // 得到当前三维场景</span><br><span class="line">    var viewer = cesium.viewer;</span><br><span class="line">    var scene = viewer.scene;</span><br><span class="line"></span><br><span class="line">    // 得到当前三维场景的椭球体</span><br><span class="line">    var ellipsoid = scene.globe.ellipsoid;</span><br><span class="line">    var canvas = scene.canvas;</span><br><span class="line"></span><br><span class="line">    // canvas左上角</span><br><span class="line">    var car3_lt = viewer.camera.pickEllipsoid(new Cesium.Cartesian2(0, 0), ellipsoid);</span><br><span class="line"></span><br><span class="line">    // canvas右下角</span><br><span class="line">    var car3_rb = viewer.camera.pickEllipsoid(new Cesium.Cartesian2(canvas.width, canvas.height), ellipsoid);</span><br><span class="line"></span><br><span class="line">    // 当canvas左上角和右下角全部在椭球体上</span><br><span class="line">    if (car3_lt &amp;&amp; car3_rb) &#123;</span><br><span class="line">        var carto_lt = ellipsoid.cartesianToCartographic(car3_lt);</span><br><span class="line">        var carto_rb = ellipsoid.cartesianToCartographic(car3_rb);</span><br><span class="line">        extent.xmin = Cesium.Math.toDegrees(carto_lt.longitude);</span><br><span class="line">        extent.ymax = Cesium.Math.toDegrees(carto_lt.latitude);</span><br><span class="line">        extent.xmax = Cesium.Math.toDegrees(carto_rb.longitude);</span><br><span class="line">        extent.ymin = Cesium.Math.toDegrees(carto_rb.latitude);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 当canvas左上角不在但右下角在椭球体上</span><br><span class="line">    else if (!car3_lt &amp;&amp; car3_rb) &#123;</span><br><span class="line">        var car3_lt2 = null;</span><br><span class="line">        var yIndex = 0;</span><br><span class="line">        do &#123;</span><br><span class="line">            // 这里每次10像素递加，一是10像素相差不大，二是为了提高程序运行效率</span><br><span class="line">            yIndex &lt;= canvas.height ? yIndex += 10 : canvas.height;</span><br><span class="line">            car3_lt2 = viewer.camera.pickEllipsoid(new Cesium.Cartesian2(0, yIndex), ellipsoid);</span><br><span class="line">        &#125; while (!car3_lt2);</span><br><span class="line">        var carto_lt2 = ellipsoid.cartesianToCartographic(car3_lt2);</span><br><span class="line">        var carto_rb2 = ellipsoid.cartesianToCartographic(car3_rb);</span><br><span class="line">        extent.xmin = Cesium.Math.toDegrees(carto_lt2.longitude);</span><br><span class="line">        extent.ymax = Cesium.Math.toDegrees(carto_lt2.latitude);</span><br><span class="line">        extent.xmax = Cesium.Math.toDegrees(carto_rb2.longitude);</span><br><span class="line">        extent.ymin = Cesium.Math.toDegrees(carto_rb2.latitude);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 获取高度</span><br><span class="line">    extent.height = Math.ceil(viewer.camera.positionCartographic.height);</span><br><span class="line">    return extent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/03/16/Cesium%E9%80%9A%E8%BF%87ctb%E5%B7%A5%E5%85%B7%E7%94%9F%E6%88%90terrain%E9%AB%98%E7%A8%8B%E5%9C%B0%E5%BD%A2%EF%BC%8Ccesium%E5%8A%A0%E8%BD%BD%E5%B9%B6%E4%BD%BF%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Cesium通过ctb工具生成terrain高程地形，cesium加载并使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/02/12/threejs%E7%9A%84%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">threejs的使用</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 Ly0807
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

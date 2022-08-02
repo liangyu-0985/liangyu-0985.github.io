@@ -91,7 +91,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Cesium/" style="font-size: 10px;">Cesium</a> <a href="/tags/Three/" style="font-size: 10px;">Three</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a>
+						<a href="/tags/Cesium/" style="font-size: 15px;">Cesium</a> <a href="/tags/Potree/" style="font-size: 10px;">Potree</a> <a href="/tags/Three/" style="font-size: 10px;">Three</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a>
 					</div>
 				</section>
 				
@@ -153,11 +153,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Cesium封装了一个轨道轨迹运行的类" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-CesiumLabApkServe安装失败" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/08/01/Cesium%E5%B0%81%E8%A3%85%E4%BA%86%E4%B8%80%E4%B8%AA%E8%BD%A8%E9%81%93%E8%BD%A8%E8%BF%B9%E8%BF%90%E8%A1%8C%E7%9A%84%E7%B1%BB/" class="article-date">
-  	<time datetime="2022-08-01T07:47:34.894Z" itemprop="datePublished">2022-08-01</time>
+      <a href="/2022/04/16/CesiumLabApkServe%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5/" class="article-date">
+  	<time datetime="2022-04-15T16:00:00.000Z" itemprop="datePublished">2022-04-16</time>
 </a>
     </div>
   
@@ -170,8 +170,8 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/01/Cesium%E5%B0%81%E8%A3%85%E4%BA%86%E4%B8%80%E4%B8%AA%E8%BD%A8%E9%81%93%E8%BD%A8%E8%BF%B9%E8%BF%90%E8%A1%8C%E7%9A%84%E7%B1%BB/">
-        Cesium封装了一个轨道轨迹运行的类
+      <a class="article-title" href="/2022/04/16/CesiumLabApkServe%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5/">
+        CesiumLabApkServe安装失败
         
       </a>
     </h1>
@@ -182,11 +182,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>该方法可以生成一条运行轨迹，默认轨迹运行过的为红色，轨迹即将运行的为绿色</p>
+        <h2 id="参考"><a href="#参考" class="headerlink" title="-参考-"></a>-参考-</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/weshmily/CesiumLabApkServe">CesiumLabApkServe工具github</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/download/release/v12.16.3/">nodejs-12.16.3版本下载地址</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27118895/article/details/96434782">CeisumLabApkServe–为CeisumLab工具下载地图,影像数据的.pak文件架设地图服务</a></li>
+</ul>
 </blockquote>
-<h3 id="效果图如下"><a href="#效果图如下" class="headerlink" title="效果图如下"></a>效果图如下</h3><p><img src="/../images/691f271a8017442c8b84436ebb5effe5~tplv-k3u1fbpfcp-watermark.gif" alt="轨道效果，gif录制问题，实际效果正常"></p>
-<h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Cesium封装插件</span><br><span class="line"> * 创建轨道坐标因为轨道创建需要线段表示</span><br><span class="line"> * 轨道坐标请使用数组格式的Cartesian3存放，如下所示</span><br><span class="line"> * pos.push(new Cesium.Cartesian3.fromDegrees(0, 0, 4000000))</span><br><span class="line"> * 配置项配置如下：</span><br><span class="line">    &#123;</span><br><span class="line">        viewer: cesium的viewer,</span><br><span class="line">        lineWidth: 线宽,</span><br><span class="line">        postype: 坐标点类型，默认可以不传,</span><br><span class="line">        out: &#123; 轨道行驶完毕配置项</span><br><span class="line">            name: 名称,</span><br><span class="line">            positions: 坐标点,</span><br><span class="line">            color: 颜色 Cesium.Color.GREEN || new Cesium.Color(0,255,0,1)，</span><br><span class="line">        &#125;,</span><br><span class="line">        in: &#123; 轨道即将行驶配置项</span><br><span class="line">            同上...</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"> */</span><br><span class="line">class GuiDao &#123;</span><br><span class="line"></span><br><span class="line">    constructor(args) &#123;</span><br><span class="line"></span><br><span class="line">        this.viewer = args.viewer; // cesium的viewer</span><br><span class="line">        this.lineWidth = args.lineWidth || 5; // 轨道线宽</span><br><span class="line">        this.optionOut = args.out; // 轨道行驶完毕配置项</span><br><span class="line">        this.optionIn = args.in; // 轨道即将行驶配置项</span><br><span class="line">        this.postype = args.postype; // 判断传入轨道坐标点的类型</span><br><span class="line"></span><br><span class="line">        // 轨道行驶完毕坐标点传数组类型</span><br><span class="line">        if (this.postype == &quot;array&quot;) &#123;</span><br><span class="line">            let pos = this.optionOut.positions.slice();</span><br><span class="line">            this.guidaoOut = [];</span><br><span class="line">            for (let i = 0; i &lt; pos.length; i++) &#123;</span><br><span class="line">                this.guidaoOut.push(new Cesium.Cartesian3.fromDegrees(pos[i][0], pos[i][1], pos[i][2]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            this.guidaoOut = this.optionOut.positions.slice() || []; // 轨道行驶完毕坐标点，默认为空</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 轨道即将行驶坐标点传数组类型</span><br><span class="line">        if (this.postype == &quot;array&quot;) &#123;</span><br><span class="line">            let pos = this.optionIn.positions.slice();</span><br><span class="line">            this.guidaoIn = [];</span><br><span class="line">            for (let i = 0; i &lt; pos.length; i++) &#123;</span><br><span class="line">                this.guidaoIn.push(new Cesium.Cartesian3.fromDegrees(pos[i][0], pos[i][1], pos[i][2]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            this.guidaoIn = this.optionIn.positions.slice() || []; // 轨道即将行驶坐标点，默认为空</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        this.entityOut = null; // 轨道行驶完毕的entity</span><br><span class="line">        this.entityIn = null; // 轨道即将行驶的entity</span><br><span class="line"></span><br><span class="line">        this.guidaoInterval = null; // 测试用来存放定时器的，可以删除</span><br><span class="line"></span><br><span class="line">        this.init(); // 初始化，注释掉使用test方法可以测试</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 测试方法</span><br><span class="line">    test() &#123;</span><br><span class="line">        let ci = 0;</span><br><span class="line">        for (var i = 0; i &lt; 2; i++) &#123;</span><br><span class="line">            this.guidaoOut.push(new Cesium.Cartesian3.fromDegrees(ci, 0, 4000000))</span><br><span class="line">            ci += 0.01</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (var i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">            this.guidaoIn.push(new Cesium.Cartesian3.fromDegrees(ci, 0, 4000000))</span><br><span class="line">            ci += 0.01</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        this.init();</span><br><span class="line"></span><br><span class="line">        this.guidaoInterval = setInterval(() =&gt; &#123;</span><br><span class="line">            this.next();</span><br><span class="line">        &#125;, 33)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 初始化轨道</span><br><span class="line">    init() &#123;</span><br><span class="line">        // 判断，当轨道行驶完毕的坐标点大于2个，新增</span><br><span class="line">        if (this.guidaoOut.length &gt;= 2) &#123;</span><br><span class="line">            this.entityOut = this.createGuiDaoOut();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 轨道即将行驶，新增</span><br><span class="line">        this.entityIn = this.createGuiDaoIn();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 进入下一个轨道点</span><br><span class="line">    next() &#123;</span><br><span class="line">        // 当轨道的即将行驶点为空时，直接返回</span><br><span class="line">        if (!this.guidaoIn.length) return;</span><br><span class="line"></span><br><span class="line">        // 将一个点从即将行驶的点移入行驶完毕的点</span><br><span class="line">        this.guidaoOut.push(this.guidaoIn.shift());</span><br><span class="line"></span><br><span class="line">        // 判断，当轨道行驶完毕的坐标点等于2个，新增</span><br><span class="line">        if (this.guidaoOut.length == 2) &#123;</span><br><span class="line">            this.entityOut = this.createGuiDaoOut();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 判断，当轨道即将行驶的坐标点小于2个，删除</span><br><span class="line">        if (this.guidaoIn.length &lt; 2) &#123;</span><br><span class="line">            this.viewer.entities.remove(this.entityIn)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 重置</span><br><span class="line">    reset(args) &#123;</span><br><span class="line">        this.destroy();</span><br><span class="line"></span><br><span class="line">        this.viewer = args.viewer; // cesium的viewer</span><br><span class="line">        this.lineWidth = args.lineWidth || 5; // 轨道线宽</span><br><span class="line">        this.optionOut = args.out; // 轨道行驶完毕配置项</span><br><span class="line">        this.optionIn = args.in; // 轨道即将行驶配置项</span><br><span class="line"></span><br><span class="line">        this.guidaoOut = this.optionOut.positions || []; // 轨道行驶完毕坐标点，默认为空</span><br><span class="line">        this.guidaoIn = this.optionIn.positions || []; // 轨道即将行驶坐标点，默认为空</span><br><span class="line"></span><br><span class="line">        this.entityOut = null; // 轨道行驶完毕的entity</span><br><span class="line">        this.entityIn = null; // 轨道即将行驶的entity</span><br><span class="line"></span><br><span class="line">        this.guidaoInterval = null;</span><br><span class="line"></span><br><span class="line">        this.init(); // 初始化，注释掉使用test方法可以测试</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 销毁</span><br><span class="line">    destroy() &#123;</span><br><span class="line">        // 测试用的，不测试的话，这条可以删除</span><br><span class="line">        if (this.guidaoInterval) &#123;</span><br><span class="line">            clearInterval(this.guidaoInterval);</span><br><span class="line">            this.guidaoInterval = null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 移除entity，重新添加</span><br><span class="line">        this.viewer.entities.remove(this.entityOut)</span><br><span class="line">        this.viewer.entities.remove(this.entityIn)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 创建行驶完毕的轨道</span><br><span class="line">    createGuiDaoOut() &#123;</span><br><span class="line">        return this.viewer.entities.add(&#123;</span><br><span class="line">            name: this.optionOut.name || &quot;轨道线-行驶完毕&quot;,</span><br><span class="line">            polyline: &#123;</span><br><span class="line">                positions: new Cesium.CallbackProperty(() =&gt; &#123; return this.getOutPos(); &#125;, false),</span><br><span class="line">                material: this.optionOut.color || new Cesium.Color(1, 0, 0, 1),</span><br><span class="line">                width: this.lineWidth,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    // 创建即将行驶的轨道</span><br><span class="line">    createGuiDaoIn() &#123;</span><br><span class="line">        return this.viewer.entities.add(&#123;</span><br><span class="line">            name: this.optionIn.name || &quot;轨道线-即将行驶&quot;,</span><br><span class="line">            polyline: &#123;</span><br><span class="line">                positions: new Cesium.CallbackProperty(() =&gt; &#123; return this.getInPos(); &#125;, false),</span><br><span class="line">                material: this.optionIn.color || new Cesium.Color(0, 1, 0, 1),</span><br><span class="line">                width: this.lineWidth,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    // 获取行驶完毕的轨道，回调函数</span><br><span class="line">    getOutPos() &#123; return this.guidaoOut; &#125;</span><br><span class="line">    // 获取即将行驶的轨道，回调函数</span><br><span class="line">    getInPos() &#123; return this.guidaoIn; &#125;</span><br><span class="line"></span><br><span class="line">    // 获取行驶完毕的轨道，回调函数</span><br><span class="line">    setOutPos(pos) &#123; this.guidaoOut = pos; &#125;</span><br><span class="line">    // 获取即将行驶的轨道，回调函数</span><br><span class="line">    setInPos(pos) &#123; this.guidaoIn = pos; &#125;</span><br><span class="line"></span><br><span class="line">    // 获取行驶完毕的轨道entity</span><br><span class="line">    getOutEntity() &#123; return this.entityOut; &#125;</span><br><span class="line">    // 获取即将行驶的轨道entity</span><br><span class="line">    getInEntity() &#123; return this.entityIn; &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="说明"><a href="#说明" class="headerlink" title="-说明-"></a>-说明-</h2><p>安装到最后有一个包安装不上  </p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="-思路-"></a>-思路-</h2><blockquote>
+<p>1、看了一下github更新时间为2年前，猜想可能是node版本过高的原因  </p>
+</blockquote>
+<h2 id="原因"><a href="#原因" class="headerlink" title="-原因-"></a>-原因-</h2><p>node版本号过高，我安装时版本号是14.0+版本号，退回nodejs-12.16.3版本，<strong>安装成功</strong>  </p>
+
       
     </div>
     
@@ -215,11 +223,11 @@
 
 
   
-    <article id="post-threejs的使用" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-CesiumLabApkServe跨域问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/08/01/threejs%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
-  	<time datetime="2022-08-01T07:22:29.717Z" itemprop="datePublished">2022-08-01</time>
+      <a href="/2022/04/16/CesiumLabApkServe%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" class="article-date">
+  	<time datetime="2022-04-15T16:00:00.000Z" itemprop="datePublished">2022-04-16</time>
 </a>
     </div>
   
@@ -232,7 +240,327 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/01/threejs%E7%9A%84%E4%BD%BF%E7%94%A8/">
+      <a class="article-title" href="/2022/04/16/CesiumLabApkServe%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/">
+        CesiumLabApkServe使用时不加载，浏览器提示跨域
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="参考"><a href="#参考" class="headerlink" title="-参考-"></a>-参考-</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/laden666666/p/5544572.html">谷歌浏览器跨域设置</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/johnjackson/p/11040769.html">nodejs,express允许跨域访问</a></li>
+</ul>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="-说明-"></a>-说明-</h2><p>跨域了，主要有2种方式：  </p>
+<blockquote>
+<p>1、谷歌浏览器允许跨域，参考第一个参考连接。<br>2、CesiumLabApkServe设置允许跨域  </p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="-思路-"></a>-思路-</h2><blockquote>
+<p>1、打开CesiumLabApkServe代码，查看根目录下的app.js文件。<br>2、查看引包可以看出使用的是express框架，那么直接参考express解决跨域的方法。  </p>
+</blockquote>
+<h2 id="过程"><a href="#过程" class="headerlink" title="-过程-"></a>-过程-</h2><p>将代码放到var app &#x3D; express();下即可  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//设置跨域访问</span><br><span class="line">app.all(&#x27;*&#x27;, (req, res, next) =&gt; &#123;</span><br><span class="line">  res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);</span><br><span class="line">  res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;X-Requested-With&quot;);</span><br><span class="line">  res.header(&quot;Access-Control-Allow-Methods&quot;,&quot;PUT,POST,GET,DELETE,OPTIONS&quot;);</span><br><span class="line">  res.header(&quot;X-Powered-By&quot;,&#x27; 3.2.1&#x27;)</span><br><span class="line">  res.header(&quot;Content-Type&quot;, &quot;application/json;charset=utf-8&quot;);</span><br><span class="line">  next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="-完整代码-"></a>-完整代码-</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">var createError = require(&#x27;http-errors&#x27;);</span><br><span class="line">var express = require(&#x27;express&#x27;);</span><br><span class="line">var path = require(&#x27;path&#x27;);</span><br><span class="line">var cookieParser = require(&#x27;cookie-parser&#x27;);</span><br><span class="line">var logger = require(&#x27;morgan&#x27;);</span><br><span class="line"></span><br><span class="line">var indexRouter = require(&#x27;./routes/index&#x27;);</span><br><span class="line">// var usersRouter = require(&#x27;./routes/users&#x27;);</span><br><span class="line"></span><br><span class="line">var app = express();</span><br><span class="line"></span><br><span class="line">//设置跨域访问</span><br><span class="line">app.all(&#x27;*&#x27;, (req, res, next) =&gt; &#123;</span><br><span class="line">  res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);</span><br><span class="line">  res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;X-Requested-With&quot;);</span><br><span class="line">  res.header(&quot;Access-Control-Allow-Methods&quot;,&quot;PUT,POST,GET,DELETE,OPTIONS&quot;);</span><br><span class="line">  res.header(&quot;X-Powered-By&quot;,&#x27; 3.2.1&#x27;)</span><br><span class="line">  res.header(&quot;Content-Type&quot;, &quot;application/json;charset=utf-8&quot;);</span><br><span class="line">  next();</span><br><span class="line">&#125;);</span><br><span class="line">// view engine setup</span><br><span class="line">app.set(&#x27;views&#x27;, path.join(__dirname, &#x27;views&#x27;));</span><br><span class="line">app.set(&#x27;view engine&#x27;, &#x27;pug&#x27;);</span><br><span class="line"></span><br><span class="line">app.use(logger(&#x27;dev&#x27;));</span><br><span class="line">app.use(express.json());</span><br><span class="line">app.use(express.urlencoded(&#123; extended: false &#125;));</span><br><span class="line">app.use(cookieParser());</span><br><span class="line">app.use(express.static(path.join(__dirname, &#x27;public&#x27;)));</span><br><span class="line">app.use(express.static(path.join(__dirname, &#x27;tile&#x27;)));</span><br><span class="line"></span><br><span class="line">app.use(&#x27;/&#x27;, indexRouter);</span><br><span class="line">// app.use(&#x27;/users&#x27;, usersRouter);</span><br><span class="line"></span><br><span class="line">// catch 404 and forward to error handler</span><br><span class="line">app.use(function(req, res, next) &#123;</span><br><span class="line">  next(createError(404));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// error handler</span><br><span class="line">app.use(function(err, req, res, next) &#123;</span><br><span class="line">  // set locals, only providing error in development</span><br><span class="line">  res.locals.message = err.message;</span><br><span class="line">  res.locals.error = req.app.get(&#x27;env&#x27;) === &#x27;development&#x27; ? err : &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  // render the error page</span><br><span class="line">  res.status(err.status || 500);</span><br><span class="line">  res.render(&#x27;error&#x27;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports = app;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cesium/" rel="tag">Cesium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Cesium加载高程地形文件" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/04/10/Cesium%E5%8A%A0%E8%BD%BD%E9%AB%98%E7%A8%8B%E5%9C%B0%E5%BD%A2%E6%96%87%E4%BB%B6/" class="article-date">
+  	<time datetime="2022-04-09T16:00:00.000Z" itemprop="datePublished">2022-04-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/10/Cesium%E5%8A%A0%E8%BD%BD%E9%AB%98%E7%A8%8B%E5%9C%B0%E5%BD%A2%E6%96%87%E4%BB%B6/">
+        Cesium加载高程地形文件
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h2><p>1、地形数据的坐标系必须是WGS84 经纬度坐标系。<br>2、地形数据的格式必须是tif。  </p>
+<h2 id="数据发布"><a href="#数据发布" class="headerlink" title="数据发布"></a>数据发布</h2><p>发布工具使用cesium terrain builder，以下简称CTB。<br>发布流程如下：<br>1、将ctb解压出来，配置环境变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">变量名：GDAL_DATA</span><br><span class="line">变量值：../CTB/gdal-data</span><br></pre></td></tr></table></figure>
+<p>2、配置path环境变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">变量名：Path</span><br><span class="line">变量值添加:../CTB/ctb</span><br></pre></td></tr></table></figure>
+<p>3、在cmd中执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctb-tile  -s 17 -e 1 -o D:\aaa D:\dem\test_dem.tif</span><br></pre></td></tr></table></figure>
+
+<p>参数说明：<br>-s 17 -e 1：发布的层级（网上都是14层，实际数值看项目开发，17层跟清晰，20多层处理太慢，数据太大）<br>D:\aaa ：发布之后存放的路径<br>D:\dem\test_dem.tif ：源文件<br>若有需求，可直接在cmd命令行窗口里输入ctb-tile，查看帮助文档  </p>
+<h2 id="收尾工作"><a href="#收尾工作" class="headerlink" title="收尾工作"></a>收尾工作</h2><p>1、发布后的数据从ctb或其他地方找一个layer.json文件覆盖生成的文件，这样才不会出错，生成的0级数据直接上地图会造成半球没有影像，需要拷贝一个0&#x2F;0&#x2F;0.terrain或者是0&#x2F;1&#x2F;0.terrain，具体看情况。<br>cesium terrain builder发布的地形数据边缘有锯齿，暂时没有找到解决办法。</p>
+<h2 id="数据加载"><a href="#数据加载" class="headerlink" title="数据加载"></a>数据加载</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var terrainProvider = new Cesium.CesiumTerrainProvider(&#123;</span><br><span class="line">    url: getRootPath()+&quot;ModelData/G7dem&quot;,</span><br><span class="line">    hasWaterMask:true,</span><br><span class="line">    hasVertexNormals:true</span><br><span class="line">&#125;);</span><br><span class="line">viewer.terrainProvider = terrainProvider;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cesium/" rel="tag">Cesium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Cesium通过ctb工具生成terrain高程地形，cesium加载并使用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/16/Cesium%E9%80%9A%E8%BF%87ctb%E5%B7%A5%E5%85%B7%E7%94%9F%E6%88%90terrain%E9%AB%98%E7%A8%8B%E5%9C%B0%E5%BD%A2%EF%BC%8Ccesium%E5%8A%A0%E8%BD%BD%E5%B9%B6%E4%BD%BF%E7%94%A8/" class="article-date">
+  	<time datetime="2022-03-15T16:00:00.000Z" itemprop="datePublished">2022-03-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/16/Cesium%E9%80%9A%E8%BF%87ctb%E5%B7%A5%E5%85%B7%E7%94%9F%E6%88%90terrain%E9%AB%98%E7%A8%8B%E5%9C%B0%E5%BD%A2%EF%BC%8Ccesium%E5%8A%A0%E8%BD%BD%E5%B9%B6%E4%BD%BF%E7%94%A8/">
+        Cesium通过ctb工具生成terrain高程地形，cesium加载并使用
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="参考"><a href="#参考" class="headerlink" title="-参考-"></a>-参考-</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013821237/article/details/82999006">Cesium 生成terrain地形数据—-CTB方式及步骤</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/geo-data/cesium-terrain-builder">github地址：cesium-terrain-builder工具</a></li>
+<li><a target="_blank" rel="noopener" href="http://cesium.xin/wordpress/archives/cesium-terrain-tomcat.html">Cesium实战(二十四)地形数据Tomcat部署(该文章可能需要购买VIP才能观看)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/daowangzhizhu-pt/p/8575043.html">nginx添加response响应头</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/40913210">cesium 之加载地形图 Terrain 篇（附源码下载）</a></li>
+</ul>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="-说明-"></a>-说明-</h2><p>本文分为两部分：</p>
+<ul>
+<li>1、通过ctb工具生成terrain文件，在cesium中使用。  </li>
+<li>2、ctb生成gzip压缩terrain文件，如果进行处理。<br>通过ctb（网上有人修改了ctb的源码重新编译生成的window版本）将tif（DEM）文件转换为terrain文件。当需要部署在linux服务器上，后端找到ctb的ctbdocker容器，转换的terrain文件普遍比现成的版本小。</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="-思路-"></a>-思路-</h2><blockquote>
+<ul>
+<li>1、通过ctb工具将tif文件转成terrain文件  </li>
+<li>2、cesium加载和使用  </li>
+<li>3、后端代码集成下使用ctbdocker（或者说使用ctb源码无修改版本）生成gzip压缩文件的处理</li>
+</ul>
+</blockquote>
+<h2 id="过程"><a href="#过程" class="headerlink" title="-过程-"></a>-过程-</h2><p>1、通过ctb（网上有人修改了ctb的源码重新编译生成的window版本）将tif（DEM）文件转换为terrain文件  </p>
+<ul>
+<li>1.1、配置环境变量，该包为第一个参考网站下载的CTB现成版本，下载可能需要CSDN积分  <blockquote>
+<p>a.修改Path系统变量，添加D:\soft\CTB\ctb;<br>b.添加名称为GDAL_DATA，值为D:\soft\CTB\gdal-data的系统变量  </p>
+</blockquote>
+</li>
+<li>1.2、使用CTB生成.terrain文件，cmd命令如下：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctb-tile -o (生成文件路径)D:\terrain\ -s 14 -e 0 -r nearest -c 4 (地形tif文件)D:\tif_file.tif</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>2、cesium加载terrain文件，将DEM放到项目下或者nginx下（其他服务器也可以，我这里使用的nginx）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 1、直接加载高程地形</span><br><span class="line">const viewer = new Cesium.Viewer(&#x27;cesiumContainer&#x27;, &#123;</span><br><span class="line">  terrainProvider: new Cesium.CesiumTerrainProvider(&#123;</span><br><span class="line">    url: &#x27;http://localhost:9001/DEM&#x27;,</span><br><span class="line">    isSct: true,</span><br><span class="line">  &#125;),</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 2、按需通过JS加载，这个方法可能比较笨重</span><br><span class="line">let terrainObj = &#123; url: &quot;http://localhost:9001/DEM&quot;, requestWaterMask: false, requestVertexNormals: false, proxyUrl: &quot;&quot; &#125;;</span><br><span class="line">addTerrainLayer(terrainObj);</span><br><span class="line">function addTerrainLayer(terrainObj) &#123;</span><br><span class="line">  if (terrainObj.url &amp;&amp; terrainObj.url.replace(/(^s*)|(s*$)/g, &quot;&quot;).length &gt; 0) &#123;</span><br><span class="line">    var provider = &#123;&#125;;</span><br><span class="line">    if (terrainObj.proxyUrl &amp;&amp; terrainObj.proxyUrl.length &gt; 0)</span><br><span class="line">      provider = &#123; proxy: new Cesium.DefaultProxy(terrainObj.proxyUrl), url: terrainObj.url, requestWaterMask: terrainObj.requestWaterMask, requestVertexNormals: terrainObj.requestVertexNormals &#125;;</span><br><span class="line">    else</span><br><span class="line">      provider = &#123; url: terrainObj.url, requestWaterMask: terrainObj.requestWaterMask, requestVertexNormals: terrainObj.requestVertexNormals &#125;;</span><br><span class="line"></span><br><span class="line">    var terrainProvider = new Cesium.CesiumTerrainProvider(provider);</span><br><span class="line">    viewer.terrainProvider = terrainProvider;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、后端集成docker（部署linux），生成gzip压缩的terrain处理。直接按照步骤2进行会加载不出来，这时对请求的response添加请求头，nginx修改根目录&#x2F;conf&#x2F;nginx.conf文件，对http &gt; server添加请求头</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add_header Content-Encoding gzip;</span><br></pre></td></tr></table></figure>
+<p>整体配置如下：<br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/99ee60d78dcb487eb9e4f3d67203ed98~tplv-k3u1fbpfcp-watermark.image" alt="nginx配置文件添加response请求头"></p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="-完整代码-"></a>-完整代码-</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;加载terrain文件&lt;/title&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;Libs/cesium/Build/Cesium/Widgets/widgets.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=&quot;cesiumContainer&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- 三维球加载 --&gt;</span><br><span class="line">  &lt;script src=&quot;Libs/cesium/Build/CesiumUnminified/Cesium.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    const viewer = new Cesium.Viewer(&#x27;cesiumContainer&#x27;, &#123;</span><br><span class="line">      // terrainProvider: new Cesium.CesiumTerrainProvider(&#123;</span><br><span class="line">      //   url: &#x27;http://localhost:9000/terrain/64b5040050da11ec9523d157e1306660/&#x27;,</span><br><span class="line">      //   isSct: true,</span><br><span class="line">      // &#125;),</span><br><span class="line">      imageryProvider: new Cesium.WebMapTileServiceImageryProvider(&#123;</span><br><span class="line">        url: &#x27;http://t&#123;s&#125;.tianditu.com/img_w/wmts?service=wmts&amp;request=GetTile&amp;version=1.0.0&amp;LAYER=img&amp;tileMatrixSet=w&amp;TileMatrix=&#123;TileMatrix&#125;&amp;TileRow=&#123;TileRow&#125;&amp;TileCol=&#123;TileCol&#125;&amp;style=default&amp;format=tiles&amp;tk=40ec5239dc860b604c48ba411410aa93&#x27;,</span><br><span class="line">        layer: &quot;天地图影像&quot;,</span><br><span class="line">        style: &quot;default&quot;,</span><br><span class="line">        format: &quot;image/jpeg&quot;,</span><br><span class="line">        subdomains: [&#x27;0&#x27;, &#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;, &#x27;7&#x27;, &#x27;8&#x27;, &#x27;9&#x27;, &#x27;10&#x27;, &#x27;11&#x27;, &#x27;12&#x27;, &#x27;13&#x27;, &#x27;14&#x27;, &#x27;15&#x27;, &#x27;16&#x27;, &#x27;17&#x27;, &#x27;18&#x27;],</span><br><span class="line">        tileMatrixSetID: &quot;GoogleMapsCompatible&quot;,</span><br><span class="line">      &#125;),</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    // 添加标记点</span><br><span class="line">    viewer.entities.add(&#123;</span><br><span class="line">      position: Cesium.Cartesian3.fromDegrees(116.4170284568,25.1896027799),</span><br><span class="line">      label: &#123;</span><br><span class="line">        text: &quot;dem点&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      name: &quot;dem点&quot;,</span><br><span class="line">      point: &#123;</span><br><span class="line">        pixelSize: 10,</span><br><span class="line">        color: Cesium.Color.YELLOW,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    // 添加高程地形</span><br><span class="line">    let terrainObj = &#123; url: &quot;http://localhost:9001/DEM&quot;, requestWaterMask: false, requestVertexNormals: false, proxyUrl: &quot;&quot; &#125;;</span><br><span class="line">    addTerrainLayer(terrainObj)</span><br><span class="line">    function addTerrainLayer(terrainObj) &#123;</span><br><span class="line">      if (terrainObj.url &amp;&amp; terrainObj.url.replace(/(^s*)|(s*$)/g, &quot;&quot;).length &gt; 0) &#123;</span><br><span class="line">        var provider = &#123;&#125;;</span><br><span class="line">        if (terrainObj.proxyUrl &amp;&amp; terrainObj.proxyUrl.length &gt; 0)</span><br><span class="line">          provider = &#123; proxy: new Cesium.DefaultProxy(terrainObj.proxyUrl), url: terrainObj.url, requestWaterMask: terrainObj.requestWaterMask, requestVertexNormals: terrainObj.requestVertexNormals &#125;;</span><br><span class="line">        else</span><br><span class="line">          provider = &#123; url: terrainObj.url, requestWaterMask: terrainObj.requestWaterMask, requestVertexNormals: terrainObj.requestVertexNormals &#125;;</span><br><span class="line"></span><br><span class="line">        debugger</span><br><span class="line">        var terrainProvider = new Cesium.CesiumTerrainProvider(provider);</span><br><span class="line">        viewer.terrainProvider = terrainProvider;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cesium/" rel="tag">Cesium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Cesiumjs+Threejs开发，解决模型在地球背面显示的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/12/Cesiumjs+Threejs%E5%BC%80%E5%8F%91%EF%BC%8C%E8%A7%A3%E5%86%B3%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%9C%B0%E7%90%83%E8%83%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
+  	<time datetime="2022-03-11T16:00:00.000Z" itemprop="datePublished">2022-03-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/12/Cesiumjs+Threejs%E5%BC%80%E5%8F%91%EF%BC%8C%E8%A7%A3%E5%86%B3%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%9C%B0%E7%90%83%E8%83%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/">
+        Cesiumjs+Threejs开发，解决模型在地球背面显示的问题
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="模型在地球背面时，本应该隐藏的模型，此时正在显示。"><a href="#模型在地球背面时，本应该隐藏的模型，此时正在显示。" class="headerlink" title="模型在地球背面时，本应该隐藏的模型，此时正在显示。"></a>模型在地球背面时，本应该隐藏的模型，此时正在显示。</h5><h2 id="参考"><a href="#参考" class="headerlink" title="-参考-"></a>-参考-</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36266612/article/details/88943501">CesiumJs+ThreeJs实测</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011540323/article/details/103522075">cesium与three.js，解决three.js 高版本模型出不来的问题</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/engineer_he/article/details/96478540">CesiumJs获取中心坐标</a></li>
+</ul>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="-说明-"></a>-说明-</h2><p>为什么出现了问题？<br>① Cesiumjs和Threejs集成的原理，通过定位两个DOM节点，使两个DOM重叠，将Threejs放到Cesiumjs上。<br>② 局部查看，Threejs的Mesh显示在对应的位置上。<br>③ 转动视角后，在地球背面本应该消失的模型，因为没有物体遮挡，所以模型还存在，出现了BUG。   </p>
+<h2 id="主要版本"><a href="#主要版本" class="headerlink" title="-主要版本-"></a>-主要版本-</h2><blockquote>
+<p>three.js r123，不仅限于这个版本<br>cesium.js 1.76，不仅限于这个版本  </p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="-思路-"></a>-思路-</h2><blockquote>
+<ul>
+<li>1、查找代码相关位置  </li>
+<li>2、将Pointer替换为Mouse  </li>
+<li>3、event.pointerType无法获取，故直接跳过这步，将里边的方法拿出来</li>
+</ul>
+</blockquote>
+<h2 id="过程"><a href="#过程" class="headerlink" title="-过程-"></a>-过程-</h2><h3 id="1、Cesium和Three集成"><a href="#1、Cesium和Three集成" class="headerlink" title="1、Cesium和Three集成"></a>1、Cesium和Three集成</h3><p>官方给出的cesium和threejs结合的方案，在这里将对loop代码进行规整，代码如下所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function loop() &#123;</span><br><span class="line">    requestAnimationFrame(loop); //loop</span><br><span class="line">    renderCesium();  //渲染cesium</span><br><span class="line">    renderThree();   //渲染three</span><br><span class="line">    renderCamera(); // 视角调整</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、获取中心点坐标"><a href="#2、获取中心点坐标" class="headerlink" title="2、获取中心点坐标"></a>2、获取中心点坐标</h3><p>在renderCamera视角调整代码处，修改增加获取当前视角下中心坐标点的代码，这里代码写成2部分，方便代码观看，callback回调在步骤3。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 处理三维模型显示隐藏问题</span><br><span class="line">function getCenterPosition(callback) &#123;</span><br><span class="line">    var viewer = cesium.viewer;</span><br><span class="line">    var result = viewer.camera.pickEllipsoid(new Cesium.Cartesian2(viewer.canvas.clientWidth / 2, viewer.canvas</span><br><span class="line">        .clientHeight / 2));</span><br><span class="line">    var curPosition = Cesium.Ellipsoid.WGS84.cartesianToCartographic(result);</span><br><span class="line">    var lon = curPosition.longitude * 180 / Math.PI;</span><br><span class="line">    var lat = curPosition.latitude * 180 / Math.PI;</span><br><span class="line">    var height = getHeight(); // 获取高度</span><br><span class="line">    var now = getCurrentExtent(); // 获取当前视角下的经纬度的范围</span><br><span class="line">    </span><br><span class="line">    callback(lon,lat,height,now);</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">        lon: lon,</span><br><span class="line">        lat: lat,</span><br><span class="line">        height: height</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3、动态修改Threejs模型显隐"><a href="#3、动态修改Threejs模型显隐" class="headerlink" title="3、动态修改Threejs模型显隐"></a>3、动态修改Threejs模型显隐</h3><p>在renderCamera视角调整代码处，调用该方法，对模型进行显示隐藏处理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">getCenterPosition((lon, lat, height, now) =&gt; &#123;</span><br><span class="line">    let hei = now.height;</span><br><span class="line">    // 地球背面模型隐藏 </span><br><span class="line">    for (let k in modelDict) &#123;</span><br><span class="line">        let item = modelDict[k];</span><br><span class="line">        var pos = item.getPosition();</span><br><span class="line">        let lon1 = pos.lon;</span><br><span class="line">        let lat1 = pos.lat;</span><br><span class="line">        let hei1 = pos.hei;</span><br><span class="line">        if (Math.abs(lon1 - lon) &gt; 300) &#123;</span><br><span class="line">            if (lon1 &lt; 0) &#123;</span><br><span class="line">                lon1 += 360</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                lon += 360</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (Math.abs(lon1 - lon) &gt; 90 + hei1 / 100000 || Math.abs(lat1 - lat) &gt; 60) &#123;</span><br><span class="line">            item.setVisible(false);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            item.setVisible(true);</span><br><span class="line">        &#125;</span><br><span class="line">        // 优化显示</span><br><span class="line">        if (hei - hei1 &lt; 2000000 &amp;&amp; Math.abs(lon - lon1) &lt; 6 &amp;&amp; Math.abs(lat - lat1) &lt; 6) &#123;</span><br><span class="line">            item.setVisible(true);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            item.setVisible(false);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="-完整代码-"></a>-完整代码-</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br></pre></td><td class="code"><pre><span class="line">function loop() &#123;</span><br><span class="line">  requestAnimationFrame(loop);</span><br><span class="line">  renderCesium();  //渲染cesium</span><br><span class="line">  renderThree();   //渲染three</span><br><span class="line">  renderCamera();</span><br><span class="line"></span><br><span class="line">  // nowDate += 1000 * 60</span><br><span class="line">  // var utc=Cesium.JulianDate.fromDate(new Date(nowDate)); // 获取当前时间</span><br><span class="line">  // cesium.viewer.clockViewModel.currentTime = Cesium.JulianDate.addHours(utc,0,new Cesium.JulianDate()); // 设置时间，第二个是时差</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function renderCesium() &#123;</span><br><span class="line">  cesium.viewer.render();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function renderThree() &#123;</span><br><span class="line">  var width = ThreeContainer.clientWidth;</span><br><span class="line">  var height = ThreeContainer.clientHeight;</span><br><span class="line">  three.renderer.setSize(width, height);</span><br><span class="line">  three.renderer.render(three.scene, three.camera);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function renderCamera() &#123;</span><br><span class="line">  // register Three.js scene with Cesium</span><br><span class="line">  three.camera.fov = Cesium.Math.toDegrees(cesium.viewer.camera.frustum.fovy) // ThreeJS FOV is vertical</span><br><span class="line">  three.camera.updateProjectionMatrix();</span><br><span class="line"></span><br><span class="line">  // Clone Cesium Camera projection position so the</span><br><span class="line">  // Three.js Object will appear to be at the same place as above the Cesium Globe</span><br><span class="line"></span><br><span class="line">  three.camera.matrixAutoUpdate = false;</span><br><span class="line">  var cvm = cesium.viewer.camera.viewMatrix;</span><br><span class="line">  var civm = cesium.viewer.camera.inverseViewMatrix;</span><br><span class="line">  three.camera.lookAt(new THREE.Vector3(0, 0, 0));</span><br><span class="line">  three.camera.matrixWorld.set(</span><br><span class="line">    civm[0], civm[4], civm[8], civm[12],</span><br><span class="line">    civm[1], civm[5], civm[9], civm[13],</span><br><span class="line">    civm[2], civm[6], civm[10], civm[14],</span><br><span class="line">    civm[3], civm[7], civm[11], civm[15]</span><br><span class="line">  );</span><br><span class="line">  three.camera.matrixWorldInverse.set(</span><br><span class="line">    cvm[0], cvm[4], cvm[8], cvm[12],</span><br><span class="line">    cvm[1], cvm[5], cvm[9], cvm[13],</span><br><span class="line">    cvm[2], cvm[6], cvm[10], cvm[14],</span><br><span class="line">    cvm[3], cvm[7], cvm[11], cvm[15]</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  var width = ThreeContainer.clientWidth;</span><br><span class="line">  var height = ThreeContainer.clientHeight;</span><br><span class="line">  var aspect = width / height;</span><br><span class="line">  three.camera.aspect = aspect;</span><br><span class="line">  three.camera.updateProjectionMatrix();</span><br><span class="line"></span><br><span class="line">  getCenterPosition((lon, lat, height, now) =&gt; &#123;</span><br><span class="line">    let hei = now.height;</span><br><span class="line">    // 地球背面模型隐藏 </span><br><span class="line">    for (let k in modelDict) &#123;</span><br><span class="line">      let item = modelDict[k];</span><br><span class="line">      var pos = item.getPosition();</span><br><span class="line">      let lon1 = pos.lon;</span><br><span class="line">      let lat1 = pos.lat;</span><br><span class="line">      let hei1 = pos.hei;</span><br><span class="line">      if (Math.abs(lon1 - lon) &gt; 300) &#123;</span><br><span class="line">        if (lon1 &lt; 0) &#123;</span><br><span class="line">          lon1 += 360</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          lon += 360</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      if (Math.abs(lon1 - lon) &gt; 90 + hei1 / 100000 || Math.abs(lat1 - lat) &gt; 60) &#123;</span><br><span class="line">        item.setVisible(false);</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        item.setVisible(true);</span><br><span class="line">      &#125;</span><br><span class="line">      // 优化显示</span><br><span class="line">      if (hei - hei1 &lt; 2000000 &amp;&amp; Math.abs(lon - lon1) &lt; 6 &amp;&amp; Math.abs(lat - lat1) &lt; 6) &#123;</span><br><span class="line">        item.setVisible(true);</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        item.setVisible(false);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">// 处理三维模型显示隐藏问题</span><br><span class="line">function getCenterPosition(callback) &#123;</span><br><span class="line">    var viewer = cesium.viewer;</span><br><span class="line">    var result = viewer.camera.pickEllipsoid(new Cesium.Cartesian2(viewer.canvas.clientWidth / 2, viewer.canvas</span><br><span class="line">        .clientHeight / 2));</span><br><span class="line">    var curPosition = Cesium.Ellipsoid.WGS84.cartesianToCartographic(result);</span><br><span class="line">    var lon = curPosition.longitude * 180 / Math.PI;</span><br><span class="line">    var lat = curPosition.latitude * 180 / Math.PI;</span><br><span class="line">    var height = getHeight();</span><br><span class="line">    var now = getCurrentExtent();</span><br><span class="line">    </span><br><span class="line">    callback(lon,lat,height,now);</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">        lon: lon,</span><br><span class="line">        lat: lat,</span><br><span class="line">        height: height</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">/* 获取camera高度  */</span><br><span class="line">function getHeight() &#123;</span><br><span class="line">    var viewer = cesium.viewer;</span><br><span class="line">    if (viewer) &#123;</span><br><span class="line">        var scene = viewer.scene;</span><br><span class="line">        var ellipsoid = scene.globe.ellipsoid;</span><br><span class="line">        var height = ellipsoid.cartesianToCartographic(viewer.camera.position).height;</span><br><span class="line">        return height;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">function getCurrentExtent() &#123;</span><br><span class="line">    // 范围对象</span><br><span class="line">    var extent = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    // 得到当前三维场景</span><br><span class="line">    var viewer = cesium.viewer;</span><br><span class="line">    var scene = viewer.scene;</span><br><span class="line"></span><br><span class="line">    // 得到当前三维场景的椭球体</span><br><span class="line">    var ellipsoid = scene.globe.ellipsoid;</span><br><span class="line">    var canvas = scene.canvas;</span><br><span class="line"></span><br><span class="line">    // canvas左上角</span><br><span class="line">    var car3_lt = viewer.camera.pickEllipsoid(new Cesium.Cartesian2(0, 0), ellipsoid);</span><br><span class="line"></span><br><span class="line">    // canvas右下角</span><br><span class="line">    var car3_rb = viewer.camera.pickEllipsoid(new Cesium.Cartesian2(canvas.width, canvas.height), ellipsoid);</span><br><span class="line"></span><br><span class="line">    // 当canvas左上角和右下角全部在椭球体上</span><br><span class="line">    if (car3_lt &amp;&amp; car3_rb) &#123;</span><br><span class="line">        var carto_lt = ellipsoid.cartesianToCartographic(car3_lt);</span><br><span class="line">        var carto_rb = ellipsoid.cartesianToCartographic(car3_rb);</span><br><span class="line">        extent.xmin = Cesium.Math.toDegrees(carto_lt.longitude);</span><br><span class="line">        extent.ymax = Cesium.Math.toDegrees(carto_lt.latitude);</span><br><span class="line">        extent.xmax = Cesium.Math.toDegrees(carto_rb.longitude);</span><br><span class="line">        extent.ymin = Cesium.Math.toDegrees(carto_rb.latitude);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 当canvas左上角不在但右下角在椭球体上</span><br><span class="line">    else if (!car3_lt &amp;&amp; car3_rb) &#123;</span><br><span class="line">        var car3_lt2 = null;</span><br><span class="line">        var yIndex = 0;</span><br><span class="line">        do &#123;</span><br><span class="line">            // 这里每次10像素递加，一是10像素相差不大，二是为了提高程序运行效率</span><br><span class="line">            yIndex &lt;= canvas.height ? yIndex += 10 : canvas.height;</span><br><span class="line">            car3_lt2 = viewer.camera.pickEllipsoid(new Cesium.Cartesian2(0, yIndex), ellipsoid);</span><br><span class="line">        &#125; while (!car3_lt2);</span><br><span class="line">        var carto_lt2 = ellipsoid.cartesianToCartographic(car3_lt2);</span><br><span class="line">        var carto_rb2 = ellipsoid.cartesianToCartographic(car3_rb);</span><br><span class="line">        extent.xmin = Cesium.Math.toDegrees(carto_lt2.longitude);</span><br><span class="line">        extent.ymax = Cesium.Math.toDegrees(carto_lt2.latitude);</span><br><span class="line">        extent.xmax = Cesium.Math.toDegrees(carto_rb2.longitude);</span><br><span class="line">        extent.ymin = Cesium.Math.toDegrees(carto_rb2.latitude);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 获取高度</span><br><span class="line">    extent.height = Math.ceil(viewer.camera.positionCartographic.height);</span><br><span class="line">    return extent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cesium/" rel="tag">Cesium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Three/" rel="tag">Three</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-threejs的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/02/12/threejs%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
+  	<time datetime="2022-02-11T16:00:00.000Z" itemprop="datePublished">2022-02-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/12/threejs%E7%9A%84%E4%BD%BF%E7%94%A8/">
         threejs的使用
         
       </a>
@@ -345,11 +673,11 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Cesium封装了一个轨道轨迹运行的类" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/08/01/hello-world/" class="article-date">
-  	<time datetime="2022-08-01T01:52:01.311Z" itemprop="datePublished">2022-08-01</time>
+      <a href="/2021/04/16/Cesium%E5%B0%81%E8%A3%85%E4%BA%86%E4%B8%80%E4%B8%AA%E8%BD%A8%E9%81%93%E8%BD%A8%E8%BF%B9%E8%BF%90%E8%A1%8C%E7%9A%84%E7%B1%BB/" class="article-date">
+  	<time datetime="2021-04-15T16:00:00.000Z" itemprop="datePublished">2021-04-16</time>
 </a>
     </div>
   
@@ -362,8 +690,8 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/01/hello-world/">
-        Hello Hexo
+      <a class="article-title" href="/2021/04/16/Cesium%E5%B0%81%E8%A3%85%E4%BA%86%E4%B8%80%E4%B8%AA%E8%BD%A8%E9%81%93%E8%BD%A8%E8%BF%B9%E8%BF%90%E8%A1%8C%E7%9A%84%E7%B1%BB/">
+        Cesium封装了一个轨道轨迹运行的类
         
       </a>
     </h1>
@@ -374,26 +702,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>欢迎来到 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>！这是你的第一个帖子。请<a target="_blank" rel="noopener" href="https://hexo.io/docs/">查看文档</a>以了解更多信息。如果你在使用Hexo时遇到任何问题，你可以在<a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">故障排除</a>中找到答案，或者你可以在<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>上问我。</p>
-<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><h3 id="创建一个新帖子"><a href="#创建一个新帖子" class="headerlink" title="创建一个新帖子"></a>创建一个新帖子</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="运行服务"><a href="#运行服务" class="headerlink" title="运行服务"></a>运行服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>更多信息: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+        <blockquote>
+<p>该方法可以生成一条运行轨迹，默认轨迹运行过的为红色，轨迹即将运行的为绿色</p>
+</blockquote>
+<h3 id="效果图如下"><a href="#效果图如下" class="headerlink" title="效果图如下"></a>效果图如下</h3><p><img src="/../images/691f271a8017442c8b84436ebb5effe5~tplv-k3u1fbpfcp-watermark.gif" alt="轨道效果，gif录制问题，实际效果正常"></p>
+<h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Cesium封装插件</span><br><span class="line"> * 创建轨道坐标因为轨道创建需要线段表示</span><br><span class="line"> * 轨道坐标请使用数组格式的Cartesian3存放，如下所示</span><br><span class="line"> * pos.push(new Cesium.Cartesian3.fromDegrees(0, 0, 4000000))</span><br><span class="line"> * 配置项配置如下：</span><br><span class="line">    &#123;</span><br><span class="line">        viewer: cesium的viewer,</span><br><span class="line">        lineWidth: 线宽,</span><br><span class="line">        postype: 坐标点类型，默认可以不传,</span><br><span class="line">        out: &#123; 轨道行驶完毕配置项</span><br><span class="line">            name: 名称,</span><br><span class="line">            positions: 坐标点,</span><br><span class="line">            color: 颜色 Cesium.Color.GREEN || new Cesium.Color(0,255,0,1)，</span><br><span class="line">        &#125;,</span><br><span class="line">        in: &#123; 轨道即将行驶配置项</span><br><span class="line">            同上...</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"> */</span><br><span class="line">class GuiDao &#123;</span><br><span class="line"></span><br><span class="line">    constructor(args) &#123;</span><br><span class="line"></span><br><span class="line">        this.viewer = args.viewer; // cesium的viewer</span><br><span class="line">        this.lineWidth = args.lineWidth || 5; // 轨道线宽</span><br><span class="line">        this.optionOut = args.out; // 轨道行驶完毕配置项</span><br><span class="line">        this.optionIn = args.in; // 轨道即将行驶配置项</span><br><span class="line">        this.postype = args.postype; // 判断传入轨道坐标点的类型</span><br><span class="line"></span><br><span class="line">        // 轨道行驶完毕坐标点传数组类型</span><br><span class="line">        if (this.postype == &quot;array&quot;) &#123;</span><br><span class="line">            let pos = this.optionOut.positions.slice();</span><br><span class="line">            this.guidaoOut = [];</span><br><span class="line">            for (let i = 0; i &lt; pos.length; i++) &#123;</span><br><span class="line">                this.guidaoOut.push(new Cesium.Cartesian3.fromDegrees(pos[i][0], pos[i][1], pos[i][2]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            this.guidaoOut = this.optionOut.positions.slice() || []; // 轨道行驶完毕坐标点，默认为空</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 轨道即将行驶坐标点传数组类型</span><br><span class="line">        if (this.postype == &quot;array&quot;) &#123;</span><br><span class="line">            let pos = this.optionIn.positions.slice();</span><br><span class="line">            this.guidaoIn = [];</span><br><span class="line">            for (let i = 0; i &lt; pos.length; i++) &#123;</span><br><span class="line">                this.guidaoIn.push(new Cesium.Cartesian3.fromDegrees(pos[i][0], pos[i][1], pos[i][2]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            this.guidaoIn = this.optionIn.positions.slice() || []; // 轨道即将行驶坐标点，默认为空</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        this.entityOut = null; // 轨道行驶完毕的entity</span><br><span class="line">        this.entityIn = null; // 轨道即将行驶的entity</span><br><span class="line"></span><br><span class="line">        this.guidaoInterval = null; // 测试用来存放定时器的，可以删除</span><br><span class="line"></span><br><span class="line">        this.init(); // 初始化，注释掉使用test方法可以测试</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 测试方法</span><br><span class="line">    test() &#123;</span><br><span class="line">        let ci = 0;</span><br><span class="line">        for (var i = 0; i &lt; 2; i++) &#123;</span><br><span class="line">            this.guidaoOut.push(new Cesium.Cartesian3.fromDegrees(ci, 0, 4000000))</span><br><span class="line">            ci += 0.01</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (var i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">            this.guidaoIn.push(new Cesium.Cartesian3.fromDegrees(ci, 0, 4000000))</span><br><span class="line">            ci += 0.01</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        this.init();</span><br><span class="line"></span><br><span class="line">        this.guidaoInterval = setInterval(() =&gt; &#123;</span><br><span class="line">            this.next();</span><br><span class="line">        &#125;, 33)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 初始化轨道</span><br><span class="line">    init() &#123;</span><br><span class="line">        // 判断，当轨道行驶完毕的坐标点大于2个，新增</span><br><span class="line">        if (this.guidaoOut.length &gt;= 2) &#123;</span><br><span class="line">            this.entityOut = this.createGuiDaoOut();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 轨道即将行驶，新增</span><br><span class="line">        this.entityIn = this.createGuiDaoIn();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 进入下一个轨道点</span><br><span class="line">    next() &#123;</span><br><span class="line">        // 当轨道的即将行驶点为空时，直接返回</span><br><span class="line">        if (!this.guidaoIn.length) return;</span><br><span class="line"></span><br><span class="line">        // 将一个点从即将行驶的点移入行驶完毕的点</span><br><span class="line">        this.guidaoOut.push(this.guidaoIn.shift());</span><br><span class="line"></span><br><span class="line">        // 判断，当轨道行驶完毕的坐标点等于2个，新增</span><br><span class="line">        if (this.guidaoOut.length == 2) &#123;</span><br><span class="line">            this.entityOut = this.createGuiDaoOut();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 判断，当轨道即将行驶的坐标点小于2个，删除</span><br><span class="line">        if (this.guidaoIn.length &lt; 2) &#123;</span><br><span class="line">            this.viewer.entities.remove(this.entityIn)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 重置</span><br><span class="line">    reset(args) &#123;</span><br><span class="line">        this.destroy();</span><br><span class="line"></span><br><span class="line">        this.viewer = args.viewer; // cesium的viewer</span><br><span class="line">        this.lineWidth = args.lineWidth || 5; // 轨道线宽</span><br><span class="line">        this.optionOut = args.out; // 轨道行驶完毕配置项</span><br><span class="line">        this.optionIn = args.in; // 轨道即将行驶配置项</span><br><span class="line"></span><br><span class="line">        this.guidaoOut = this.optionOut.positions || []; // 轨道行驶完毕坐标点，默认为空</span><br><span class="line">        this.guidaoIn = this.optionIn.positions || []; // 轨道即将行驶坐标点，默认为空</span><br><span class="line"></span><br><span class="line">        this.entityOut = null; // 轨道行驶完毕的entity</span><br><span class="line">        this.entityIn = null; // 轨道即将行驶的entity</span><br><span class="line"></span><br><span class="line">        this.guidaoInterval = null;</span><br><span class="line"></span><br><span class="line">        this.init(); // 初始化，注释掉使用test方法可以测试</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 销毁</span><br><span class="line">    destroy() &#123;</span><br><span class="line">        // 测试用的，不测试的话，这条可以删除</span><br><span class="line">        if (this.guidaoInterval) &#123;</span><br><span class="line">            clearInterval(this.guidaoInterval);</span><br><span class="line">            this.guidaoInterval = null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 移除entity，重新添加</span><br><span class="line">        this.viewer.entities.remove(this.entityOut)</span><br><span class="line">        this.viewer.entities.remove(this.entityIn)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 创建行驶完毕的轨道</span><br><span class="line">    createGuiDaoOut() &#123;</span><br><span class="line">        return this.viewer.entities.add(&#123;</span><br><span class="line">            name: this.optionOut.name || &quot;轨道线-行驶完毕&quot;,</span><br><span class="line">            polyline: &#123;</span><br><span class="line">                positions: new Cesium.CallbackProperty(() =&gt; &#123; return this.getOutPos(); &#125;, false),</span><br><span class="line">                material: this.optionOut.color || new Cesium.Color(1, 0, 0, 1),</span><br><span class="line">                width: this.lineWidth,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    // 创建即将行驶的轨道</span><br><span class="line">    createGuiDaoIn() &#123;</span><br><span class="line">        return this.viewer.entities.add(&#123;</span><br><span class="line">            name: this.optionIn.name || &quot;轨道线-即将行驶&quot;,</span><br><span class="line">            polyline: &#123;</span><br><span class="line">                positions: new Cesium.CallbackProperty(() =&gt; &#123; return this.getInPos(); &#125;, false),</span><br><span class="line">                material: this.optionIn.color || new Cesium.Color(0, 1, 0, 1),</span><br><span class="line">                width: this.lineWidth,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    // 获取行驶完毕的轨道，回调函数</span><br><span class="line">    getOutPos() &#123; return this.guidaoOut; &#125;</span><br><span class="line">    // 获取即将行驶的轨道，回调函数</span><br><span class="line">    getInPos() &#123; return this.guidaoIn; &#125;</span><br><span class="line"></span><br><span class="line">    // 获取行驶完毕的轨道，回调函数</span><br><span class="line">    setOutPos(pos) &#123; this.guidaoOut = pos; &#125;</span><br><span class="line">    // 获取即将行驶的轨道，回调函数</span><br><span class="line">    setInPos(pos) &#123; this.guidaoIn = pos; &#125;</span><br><span class="line"></span><br><span class="line">    // 获取行驶完毕的轨道entity</span><br><span class="line">    getOutEntity() &#123; return this.entityOut; &#125;</span><br><span class="line">    // 获取即将行驶的轨道entity</span><br><span class="line">    getInEntity() &#123; return this.entityIn; &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cesium/" rel="tag">Cesium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+	</div>
+
       
 
       
@@ -412,6 +735,236 @@
 
 
   
+    <article id="post-threejs火狐低版本视角转动问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/04/12/threejs%E7%81%AB%E7%8B%90%E4%BD%8E%E7%89%88%E6%9C%AC%E8%A7%86%E8%A7%92%E8%BD%AC%E5%8A%A8%E9%97%AE%E9%A2%98/" class="article-date">
+  	<time datetime="2021-04-11T16:00:00.000Z" itemprop="datePublished">2021-04-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/12/threejs%E7%81%AB%E7%8B%90%E4%BD%8E%E7%89%88%E6%9C%AC%E8%A7%86%E8%A7%92%E8%BD%AC%E5%8A%A8%E9%97%AE%E9%A2%98/">
+        threejs火狐低版本视角转动问题
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="通过THREE-OrbitControls这个方法来进行视角转动，网上给出的大部分原因为创建时由于没有传第二个参数或者是新建了一个标签覆盖等问题导致视角无法转动。"><a href="#通过THREE-OrbitControls这个方法来进行视角转动，网上给出的大部分原因为创建时由于没有传第二个参数或者是新建了一个标签覆盖等问题导致视角无法转动。" class="headerlink" title="通过THREE.OrbitControls这个方法来进行视角转动，网上给出的大部分原因为创建时由于没有传第二个参数或者是新建了一个标签覆盖等问题导致视角无法转动。"></a>通过THREE.OrbitControls这个方法来进行视角转动，网上给出的大部分原因为创建时由于没有传第二个参数或者是新建了一个标签覆盖等问题导致视角无法转动。</h5><h2 id="参考"><a href="#参考" class="headerlink" title="-参考-"></a>-参考-</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.iefans.net/zhizhen-shijian-pointer-event/">浏览器的统一指针事件：Pointer Event</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/fetch_api/fetch_api-v9eg2pyi.html">window属性：onpaint</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43170484/article/details/89789915">（不是解决办法，仅纪录用）使用HTML元素作为sprite添加到场景后无法转动视角的问题</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012685679/article/details/54342537">（不是解决办法，仅纪录用）解决Three.js中使用OrbitControls导致不能选中DOM的问题</a></li>
+</ul>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="-说明-"></a>-说明-</h2><p>为什么出现了问题？<br>① 正常情况下，在最新版本的谷歌浏览器（最新版火狐浏览器不清楚）下可以正常使用，并且通过QT（5.10+版本以上），window10系统下没有问题。<br>② 在低版本火狐或者是linux环境下的QT发生了这个问题。<br>③ 经过排查排除上方的OrbitControls传第二个参数的原因，通过控制器可以发现第二个参数打印正常。<br>④ 最后发现OrbitControls内部的方法在低版本下无法使用，主要定位到了Pointer这个事件上。  </p>
+<h3 id="主要版本"><a href="#主要版本" class="headerlink" title="-主要版本-"></a>-主要版本-</h3><blockquote>
+<p>three.js r123，不仅限于这个版本<br>firefox 51.0.1，不仅限于这个版本<br>QT 5.9.6，linux环境  </p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="-思路-"></a>-思路-</h2><blockquote>
+<p>1、查找代码相关位置<br>2、将Pointer替换为Mouse<br>3、event.pointerType无法获取，故直接跳过这步，将里边的方法拿出来  </p>
+</blockquote>
+<h2 id="过程"><a href="#过程" class="headerlink" title="-过程-"></a>-过程-</h2><h3 id="1、鼠标按下事件修改"><a href="#1、鼠标按下事件修改" class="headerlink" title="1、鼠标按下事件修改"></a>1、鼠标按下事件修改</h3><p>在OrbitControls.js内，通过定位Pointer，找到相对应的位置，截图部分我已经对其修改了：<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/39a72e6248b74df29044c4c1d804174c~tplv-k3u1fbpfcp-watermark.image" alt="这里我已经对其修改了，代码行数为1162"><br><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5f0ca13cdd424c4caadfd135315e70ee~tplv-k3u1fbpfcp-watermark.image" alt="这里我已经对其修改了，代码行数为912和913">  </p>
+<h3 id="2、找到事件方法的位置"><a href="#2、找到事件方法的位置" class="headerlink" title="2、找到事件方法的位置"></a>2、找到事件方法的位置</h3><p>找到对应事件的方法（三个方法应该靠在一起），将event.pointerType移除，内部的方法拿出来，代码如下（注意，我这里的switch方法没有删除，故意留在这里的）：<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fa6b265d807243eb860e1afde73dc2f1~tplv-k3u1fbpfcp-watermark.image" alt="这处代码也已经对其修改了，后边有放出过兼容的代码，不过兼不兼容都无所谓。"><br>这里我的方法名都没有进行修改，还叫原来的名字，看情况想改就改。  </p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="-完整代码-"></a>-完整代码-</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">scope.domElement.addEventListener( &#x27;contextmenu&#x27;, onContextMenu, false );</span><br><span class="line">scope.domElement.addEventListener( &#x27;mousedown&#x27;, onPointerDown, false );</span><br><span class="line">scope.domElement.addEventListener( &#x27;wheel&#x27;, onMouseWheel, false );</span><br><span class="line">scope.domElement.addEventListener( &#x27;touchstart&#x27;, onTouchStart, false );</span><br><span class="line">scope.domElement.addEventListener( &#x27;touchend&#x27;, onTouchEnd, false );</span><br><span class="line">scope.domElement.addEventListener( &#x27;touchmove&#x27;, onTouchMove, false );</span><br><span class="line">scope.domElement.addEventListener( &#x27;keydown&#x27;, onKeyDown, false );</span><br><span class="line">// force an update at start</span><br><span class="line">this.update();</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">if ( state !== STATE.NONE ) &#123;</span><br><span class="line">	scope.domElement.ownerDocument.addEventListener( &#x27;mousemove&#x27;, onPointerMove, false );</span><br><span class="line">	scope.domElement.ownerDocument.addEventListener( &#x27;mouseup&#x27;, onPointerUp, false );</span><br><span class="line">	scope.dispatchEvent( startEvent );</span><br><span class="line">&#125;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">function onPointerDown( event ) &#123;</span><br><span class="line">    if ( scope.enabled === false ) return;</span><br><span class="line">    if(&quot;pointerType&quot; in event)&#123;</span><br><span class="line">        switch ( event.pointerType ) &#123;</span><br><span class="line"></span><br><span class="line">            case &#x27;mouse&#x27;:</span><br><span class="line">            case &#x27;pen&#x27;:</span><br><span class="line">                onMouseDown( event );</span><br><span class="line">                break;</span><br><span class="line"></span><br><span class="line">            // TODO touch</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        onMouseDown( event );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function onPointerMove( event ) &#123;</span><br><span class="line">    if ( scope.enabled === false ) return;</span><br><span class="line">    if(&quot;pointerType&quot; in event)&#123;</span><br><span class="line">        switch ( event.pointerType ) &#123;</span><br><span class="line"></span><br><span class="line">            case &#x27;mouse&#x27;:</span><br><span class="line">            case &#x27;pen&#x27;:</span><br><span class="line">                onMouseMove( event );</span><br><span class="line">                break;</span><br><span class="line"></span><br><span class="line">            // TODO touch</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        onMouseMove( event );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function onPointerUp( event ) &#123;</span><br><span class="line">    if(&quot;pointerType&quot; in event)&#123;</span><br><span class="line">        switch ( event.pointerType ) &#123;</span><br><span class="line"></span><br><span class="line">            case &#x27;mouse&#x27;:</span><br><span class="line">            case &#x27;pen&#x27;:</span><br><span class="line">                onMouseUp( event );</span><br><span class="line">                break;</span><br><span class="line"></span><br><span class="line">            // TODO touch</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        onMouseUp( event );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Three/" rel="tag">Three</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-potree实现截图过程" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/10/01/potree%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E8%BF%87%E7%A8%8B/" class="article-date">
+  	<time datetime="2019-09-30T16:00:00.000Z" itemprop="datePublished">2019-10-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/01/potree%E5%AE%9E%E7%8E%B0%E6%88%AA%E5%9B%BE%E8%BF%87%E7%A8%8B/">
+        potree实现截图过程
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="potree截取当前图片，保存成base64格式"><a href="#potree截取当前图片，保存成base64格式" class="headerlink" title="potree截取当前图片，保存成base64格式"></a>potree截取当前图片，保存成base64格式</h5><h2 id="参考"><a href="#参考" class="headerlink" title="-参考-"></a>-参考-</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/yrbin666/article/details/44521701?utm_source=blogxgwz2">CSDN threejs截屏</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/jarisMA/article/details/100106344">CSDN THREE.JS获取截图</a>  </li>
+<li><a target="_blank" rel="noopener" href="http://huolalaweb.com/2018/11/01/js%E6%88%AA%E5%B1%8F%E4%BB%A5%E5%8F%8Athree-js%E5%9C%BA%E6%99%AF%E6%88%AA%E5%B1%8F/">个人博客 js截屏以及three.js场景截屏</a></li>
+</ul>
+</blockquote>
+<h2 id="主要版本"><a href="#主要版本" class="headerlink" title="-主要版本-"></a>-主要版本-</h2><blockquote>
+<p>potreejs 1.6  </p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="-思路-"></a>-思路-</h2><blockquote>
+<p>1、查看webgl和three.js截图的方法<br>2、查看potree.js的源码，使用potree实现  </p>
+</blockquote>
+<h2 id="过程"><a href="#过程" class="headerlink" title="-过程-"></a>-过程-</h2><h3 id="1、查看webgl和three-js截图的方法"><a href="#1、查看webgl和three-js截图的方法" class="headerlink" title="1、查看webgl和three.js截图的方法"></a>1、查看webgl和three.js截图的方法</h3><h4 id="1-1、截图（会截取不到东西）"><a href="#1-1、截图（会截取不到东西）" class="headerlink" title="1.1、截图（会截取不到东西）"></a>1.1、截图（会截取不到东西）</h4><p>在网上搜索后，发现大部分方法用的是html2canvas.js这中方法，这种方法需要额外下载一个插件，因此推荐另一种方法：<br>① html2canvas.js截图  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 方法一</span><br><span class="line">html2canvas(document.getElementsByTagName(&quot;canvas&quot;),&#123;</span><br><span class="line">  allowTaint: true,</span><br><span class="line">  tainTest: false,</span><br><span class="line">  onrendered: function(canvas)&#123;</span><br><span class="line">    // base64直接放到img标签的src中就可以使用</span><br><span class="line">    var dataUrlBase64 = canvas.toDataURL();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>② renderer直接截图  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 方法二</span><br><span class="line">var dataUrlBase64 = renderer.domElement.toDataURL();</span><br></pre></td></tr></table></figure>
+<h4 id="1-2、正常截取"><a href="#1-2、正常截取" class="headerlink" title="1.2、正常截取"></a>1.2、正常截取</h4><p>这里会发现截图的base64图片有问题，jpg应该是黑色的（这里没有截取过），png是透明的，场景scene后期渲染的比如灯光，加载的模型都没有截图截下来（别人说的），这里有两种方法：<br>① 在渲染器开启preserveDrawingBuffer :true，即缓冲区保护-是否保存在缓冲区手动清除或覆盖，这个默认是false。  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 方法一</span><br><span class="line">renderer = new WebGLRenderer(&#123;</span><br><span class="line"> preserveDrawingBuffer :true </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>② 在截图之前先渲染一下场景和相机，就不会实时刷新屏幕  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 方法二</span><br><span class="line">rederer.render(scene, camera)</span><br></pre></td></tr></table></figure>
+<h3 id="2、查看potree-js的源码，使用potree实现"><a href="#2、查看potree-js的源码，使用potree实现" class="headerlink" title="2、查看potree.js的源码，使用potree实现"></a>2、查看potree.js的源码，使用potree实现</h3><h4 id="2-1、通过第一种截图方案定位potree渲染位置"><a href="#2-1、通过第一种截图方案定位potree渲染位置" class="headerlink" title="2.1、通过第一种截图方案定位potree渲染位置"></a>2.1、通过第一种截图方案定位potree渲染位置</h4><p>最后定位到这个代码，查找代码所在的类名，然后找到代码渲染的位置<br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a819997285974316bd14b29c368b700f~tplv-k3u1fbpfcp-watermark.image" alt="potree使用threejs代码位置"><br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fc1cbada409b4f4cab68062089636e0a~tplv-k3u1fbpfcp-watermark.image" alt="potree对应的类名"><br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4b398b34164c48cdbc27c47a4a0635f9~tplv-k3u1fbpfcp-watermark.image" alt="potree渲染的代码">  </p>
+<h4 id="2-2、实现不黑屏"><a href="#2-2、实现不黑屏" class="headerlink" title="2.2、实现不黑屏"></a>2.2、实现不黑屏</h4><p>①直接修改potreejs源码  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.renderer = new THREE.WebGLRenderer(&#123;alpha: true, premultipliedAlpha: false, preserveDrawingBuffer :true &#125;);</span><br></pre></td></tr></table></figure>
+<p>修改代码如下：<br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/70f43e443fd949fc8ad6634e225b6211~tplv-k3u1fbpfcp-watermark.image" alt="修改potree源码，添加初始化属性"><br>②通过render<br>改造代码如下：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">viewer.renderer.render(viewer.overlay,viewer.overlayCamera);</span><br></pre></td></tr></table></figure>
+<p>发现并没有生效，可能potree使用的其他东西，在这里直接调用方法就可以，截图成功：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">viewer.render();</span><br></pre></td></tr></table></figure>
+
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="-完整代码-"></a>-完整代码-</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 这句是potree案例中就有的一句，可以不加</span><br><span class="line">window.viewer = new Potree.Viewer(document.getElementById(&quot;potree_render_area&quot;));</span><br><span class="line">// 截图代码</span><br><span class="line">viewer.render();</span><br><span class="line">var dataUrlBase64 =viewer.renderer.domElement.toDataURL();</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Potree/" rel="tag">Potree</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-potree三种点云类型" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/07/12/potree%E4%B8%89%E7%A7%8D%E7%82%B9%E4%BA%91%E7%B1%BB%E5%9E%8B/" class="article-date">
+  	<time datetime="2019-07-11T16:00:00.000Z" itemprop="datePublished">2019-07-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/12/potree%E4%B8%89%E7%A7%8D%E7%82%B9%E4%BA%91%E7%B1%BB%E5%9E%8B/">
+        potree三种点云类型
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="不同场景下使用不同的点云类型"><a href="#不同场景下使用不同的点云类型" class="headerlink" title="不同场景下使用不同的点云类型"></a>不同场景下使用不同的点云类型</h5><h2 id="说明"><a href="#说明" class="headerlink" title="-说明-"></a>-说明-</h2><h3 id="修改点云三种类型的方法"><a href="#修改点云三种类型的方法" class="headerlink" title="修改点云三种类型的方法"></a>修改点云三种类型的方法</h3><h4 id="1、在创建点云文件的时候，通过代码可以修改"><a href="#1、在创建点云文件的时候，通过代码可以修改" class="headerlink" title="1、在创建点云文件的时候，通过代码可以修改"></a>1、在创建点云文件的时候，通过代码可以修改</h4><p>material.shape &#x3D; Potree.PointShape.SQUARE;<br>这里打印Potree.PointShape可以得到一个对象    {SQUARE: 0, CIRCLE: 1, PARABOLOID: 2}<br>通过对象可以发现我们可以直接给material.shape设置数0，1，2<br>在这里使用的Potree.PointShape对象来进行设置，方便代码的阅读  </p>
+<h4 id="2、点云样式的三种类型，设置使用全大写"><a href="#2、点云样式的三种类型，设置使用全大写" class="headerlink" title="2、点云样式的三种类型，设置使用全大写"></a>2、点云样式的三种类型，设置使用全大写</h4><p>① 方块square<br><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b84834e8e6fb4c029d34769c016a228b~tplv-k3u1fbpfcp-watermark.image" alt="SQUARE"><br>② 圈circle<br><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cc148d9ce450458bb8aa47024d0b111f~tplv-k3u1fbpfcp-watermark.image" alt="CIRCLE"><br>③ 抛物面 paraboloid<br>这里生成的是抛物面<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/490f191d64594e1eb9fb86f9b75f69bf~tplv-k3u1fbpfcp-watermark.image" alt="PARABOLOID"><br>生成的是一些不规则的形状<br>点云样式的使用<br>方块和圈的使用看个人情况，这里主要说一下抛物面的使用<br>如果使用方块和圈，新增加的点云文件会和原先的点云文件重叠<br><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ba371a1dd6354c6d92a077843c1d2f3d~tplv-k3u1fbpfcp-watermark.image" alt="重叠点云显示不符合情况"><br>当点云使用抛物面的使用，新添加的点云文件是可以叠加到抛物面上边的<br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5568c0be61cd4063b5fb41eed46cdea7~tplv-k3u1fbpfcp-watermark.image" alt="重叠点云显示符合情况"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Potree/" rel="tag">Potree</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    </nav>
   
 </div>
       <footer id="footer">
